@@ -9,10 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.co.gdu.cash.service.CashbookService;
+import kr.co.gdu.cash.service.CategoryService;
 import kr.co.gdu.cash.service.NoticeService;
+import kr.co.gdu.cash.vo.Cashbook;
+import kr.co.gdu.cash.vo.Category;
 import kr.co.gdu.cash.vo.Notice;
 
 @Controller
@@ -21,8 +25,41 @@ public class CashBookController {
 	private NoticeService indexService; // new IndexService랑 똑같음*/
 	
 	@Autowired private CashbookService cashbookService;
-
-	@GetMapping(value ="/cashBookByMonth" )
+	@Autowired private CategoryService categoryService;
+	
+	@PostMapping("/addCashbook")
+	public String addCashbook(Cashbook cashbook) { //커맨드객체
+		System.out.println(cashbook);
+		//System.out.println("cashbook 입력 :");
+		cashbookService.addCashbook(cashbook);//입력하면
+		return "redirect:/cashbookByMonth"; //response.sendRedirecr()역할. -> /cashbookByDay
+	}
+	
+	// 지출 수입 입력
+	@GetMapping("/addCashbook") //value 생략가능
+	public String addCashbook(Model model,
+			@RequestParam(name = "currentYear",required = true)int currentYear,
+			@RequestParam(name = "currentMonth",required = true)int currentMonth,
+			@RequestParam(name = "currentDay",required = true)int currentDay) {
+		List<Category> categoryList = categoryService.getCategoryList();
+		model.addAttribute("categoryList",categoryList);
+		return "addCashbook"; //포워딩 역할을 함.
+	}
+	
+	
+	//지출 수입 상세보기
+	@GetMapping("/cashbookByDay") // value 생략가능
+	public String cashbookByDay(Model model, 
+			@RequestParam(name = "currentYear",required = true)int currentYear,
+			@RequestParam(name = "currentMonth",required = true)int currentMonth,
+			@RequestParam(name = "currentDay",required = true)int currentDay) {
+		List<Cashbook> cashbookList = cashbookService.getCashbookListByDay(currentYear, currentMonth, currentDay);
+		model.addAttribute("cashbookList", cashbookList);
+		return "cashbookByDay";
+	}
+	
+	//
+	@GetMapping(value ="/cashbookByMonth" )
 	//requestparam으로 paramMonth가 null이면 0으로 바꿔라(int로 형변환을 해야하기 떄문에) = ("request.getParamater("paramMonth");) 
 	public String cashbookByMonth(Model model,
 			@RequestParam(name = "currentYear",defaultValue = "-1")int currentYear,

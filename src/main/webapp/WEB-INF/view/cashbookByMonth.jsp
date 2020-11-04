@@ -10,6 +10,7 @@
 </style>
 </head>
 <body>
+	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
 	<h1>Index</h1>
 	<h3>공지사항</h3>
 	<table border="1">
@@ -39,9 +40,9 @@
    </div>
 
 	<h3>
-	<a href="/cashBookByMonth?currentYear=${currentYear}&currentMonth=${currentMonth-1 }">[이전달]</a>
+	<a href="/cashbookByMonth?currentYear=${currentYear}&currentMonth=${currentMonth-1 }">[이전달]</a>
 	${currentYear }년${currentMonth}월
-	<a href="/cashBookByMonth?currentYear=${currentYear}&currentMonth=${currentMonth+1 }">[다음달]</a>
+	<a href="/cashbookByMonth?currentYear=${currentYear}&currentMonth=${currentMonth+1 }">[다음달]</a>
 	</h3>
 	
 	<div>
@@ -66,7 +67,11 @@
 						</c:if>
 						<c:if test="${i-(firstDayOfWeek-1) > 0 }">
 							<td>
-							<div>${i-(firstDayOfWeek-1)}</div>
+							<div><!-- 날짜 -->
+									<a href="/cashbookByDay?currentYear=${currentYear}&currentMonth=${currentMonth}&currentDay=${i-(firstDayOfWeek-1)}">
+										${i-(firstDayOfWeek-1)}
+									</a>
+								</div>
 							<!-- 지출/수입 목록이 있는 날씨를 cashList에서 검색 -->
 							<c:forEach var="c" items="${cashList}">
 								<c:if test="${i-(firstDayOfWeek-1)== c.dday }">
