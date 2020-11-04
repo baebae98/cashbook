@@ -3,6 +3,7 @@ package kr.co.gdu.cash.controller;
 
 import java.util.Calendar;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,7 +22,7 @@ public class CashBookController {
 	
 	@Autowired private CashbookService cashbookService;
 
-	@GetMapping(value ="/cashbookByMonth" )
+	@GetMapping(value ="/cashBookByMonth" )
 	//requestparam으로 paramMonth가 null이면 0으로 바꿔라(int로 형변환을 해야하기 떄문에) = ("request.getParamater("paramMonth");) 
 	public String cashbookByMonth(Model model,
 			@RequestParam(name = "currentYear",defaultValue = "-1")int currentYear,
@@ -55,6 +56,9 @@ public class CashBookController {
 		int sumOut= cashbookService.getSumCashbookPriceByInOut("수입", currentYear, currentMonth);
 		
 		//----------------------------------------------------------------
+		List<Map<String,Object>> cashList = cashbookService.getCashListByMonth(currentYear, currentMonth);
+		//----------------------------------------------------------------
+
 		//디버깅
 		//System.out.println(currentMonth+"<--month");
 		//System.out.println(lastDay+"<--lastDay");
@@ -78,6 +82,7 @@ public class CashBookController {
 		model.addAttribute("sumIn",sumIn);
 		model.addAttribute("sumOut",sumOut);
 		
+		model.addAttribute("cashList",cashList);
 		//model.addAttribute("list", list);
 		return "cashbookByMonth";
 	}
