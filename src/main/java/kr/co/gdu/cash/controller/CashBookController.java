@@ -27,6 +27,7 @@ public class CashBookController {
 	@Autowired private CashbookService cashbookService;
 	@Autowired private CategoryService categoryService;
 	
+	//지출 수입 입력액션
 	@PostMapping("/admin/addCashbook") //session값이 없으면 들어오지 못함.
 	public String addCashbook(Cashbook cashbook) { //커맨드객체
 		System.out.println(cashbook);

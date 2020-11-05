@@ -11,13 +11,13 @@
 	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
 	<h1>index</h1>
 	<!-- 공지 -->
+	<div>공지사항<a href="/admin/noticeList">more</a> </div>
 	<div>
 		<table border="1">
 		<thead>
 			<tr>
 				<th>notice_id</th>
 				<th>notice_title</th>
-				<th>notice_content</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -25,7 +25,6 @@
 				<tr>
 					<td>${var.noticeId}</td>
 					<td>${var.noticeTitle}</td>
-					<td>${var.noticeContent}</td> <!-- n.getNoticeContent() -->
 				</tr>
 			</c:forEach>
 		</tbody>	

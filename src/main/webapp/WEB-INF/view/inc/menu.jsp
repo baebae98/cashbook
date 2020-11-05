@@ -6,8 +6,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="/admin/index">index</a>
-	<a href="/admin/cashbookByMonth">cashbook</a>
-	<a href="/admin/logout">logout</a>
+	<a href="/admin/index">[메인페이지]</a>
+	<a href="/admin/cashbookByMonth">[가계부달력]</a>
+	<a href="/admin/logout">[로그아웃]</a>
 </body>
 </html>

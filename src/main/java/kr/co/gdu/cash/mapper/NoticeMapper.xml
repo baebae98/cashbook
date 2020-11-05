@@ -3,15 +3,70 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.gdu.cash.mapper.NoticeMapper">
+	
+	<!-- 공지사항 수정 -->
+	<update id="updateNotice" parameterType="kr.co.gdu.cash.vo.Notice">
+		UPDATE notice
+		SET notice_title = #{noticeTitle},
+			notice_content = #{noticeContent},
+			notice_date = NOW()
+		WHERE notice_id = #{noticeId}
+	</update>
+	<!-- 공지사항 삭제 -->
+	<delete id="deleteNotice" parameterType="int">
+		DELETE
+		FROM notice
+		WHERE notice_id=#{noticeId}
+	</delete>
+	<!-- 공지사항 상세보기 -->
+	<select id="selectNoticeOne" parameterType="int" resultType="kr.co.gdu.cash.vo.Notice">
+		SELECT
+			notice_id noticeId,
+			notice_title noticeTitle,
+			notice_content noticeContent,
+			notice_date noticeDate
+		FROM notice
+		WHERE notice_id = #{noticeId}
+	</select>
+	<!-- 공지사항 입력(추가) -->
+	<insert id="insertNotice" parameterType="kr.co.gdu.cash.vo.Notice">
+		INSERT INTO notice(
+			notice_title,
+			notice_content,
+			notice_date
+		)VALUES(
+			#{noticeTitle},
+			#{noticeContent},
+			NOW()
+		)
+	</insert>
+	
+	<!-- 공지사항 목록 -->
 	<select id="selectLastestNoticeList"
 		resultType="kr.co.gdu.cash.vo.Notice">
 		select
 		notice_id as noticeId,
 		notice_title as noticeTitle,
-		notice_content as noticeContent,
-		notice_date as noticeDate
+		notice_date noticeDate
 		from notice
 		order by notice_date
 		desc limit 0, 5
+	</select>
+	
+	<!-- 공지사항 목록 페이징 -->
+	<select id="selectNoticeListByPage" parameterType="java.util.Map" resultType="kr.co.gdu.cash.vo.Notice">
+		SELECT
+			notice_id noticeId,
+			notice_title noticeTitle,
+			notice_date noticeDate
+			FROM notice
+			ORDER BY notice_date DESC
+			LIMIT #{beginRow}, #{rowPerPage}
+	</select>
+	<!-- 카운트? -->
+	<select id="selectNoticeCount" resultType="int">
+		SELECT
+			COUNT(*)
+		FROM notice
 	</select>
 </mapper>

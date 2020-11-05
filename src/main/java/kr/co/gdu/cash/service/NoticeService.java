@@ -17,6 +17,46 @@ import kr.co.gdu.cash.vo.Notice;
 public class NoticeService {
 	@Autowired private NoticeMapper noticeMapper;
 	@Autowired private CashbookMapper  cashbookMapper;
+	
+	//삭제
+	public void removeNotice(int noticeId) {
+		noticeMapper.deleteNotice(noticeId);
+	}
+	//수정
+	public int modifyNotice(Notice notice) {
+		 return noticeMapper.updateNotice(notice);
+		
+		
+	}
+	//공지사항 상세보기
+	public Notice getNoticeOne(int noticeId) {
+		Notice notice = noticeMapper.selectNoticeOne(noticeId);
+		return notice;
+	}
+	//공지사항 추가 
+	public int addNotice(Notice notice) {
+		return noticeMapper.insertNotice(notice);
+	}
+	
+	
+	//공지사항 페이징
+	public Map<String, Object> getNoticeListByPage(int currentPage, int rowPerPage) {
+		Map<String, Integer> paramMap = new HashMap<String, Integer>();
+		paramMap.put("beginRow", (currentPage-1)*rowPerPage);
+		paramMap.put("rowPerPage", rowPerPage);
+		List<Notice> noticeList = noticeMapper.selectNoticeListByPage(paramMap);
+		
+		int noticeCount = noticeMapper.selectNoticeCount();
+		int lastPage = noticeCount/rowPerPage;
+		if (noticeCount%rowPerPage != 0) {
+			lastPage += 1;
+		}
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("noticeList", noticeList);
+		map.put("lastPage", lastPage);
+		return map;
+	}
 	   
 	/*
 	 * issue: 중복되는 코드가 있음. : noticeMapper.selectLastestNoticeList();
@@ -31,6 +71,7 @@ public class NoticeService {
 	     
 	   }
 	
+	//공지사항
 	public List<Notice> getNoticeList(){
 		return noticeMapper.selectLastestNoticeList();
 	}
