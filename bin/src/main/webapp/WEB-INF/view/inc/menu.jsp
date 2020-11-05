@@ -6,7 +6,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="/admin/index">index</a>
-	<a href="/admin/cashbookByMonth">cashbook</a>
+	<a href="/">index</a>
+	<a href="/cashbookByMonth">cashbook</a>
 </body>
 </html>

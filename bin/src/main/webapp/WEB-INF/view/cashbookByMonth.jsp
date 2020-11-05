@@ -40,9 +40,9 @@
    </div>
 
 	<h3>
-	<a href="/admin/cashbookByMonth?currentYear=${currentYear}&currentMonth=${currentMonth-1 }">[이전달]</a>
+	<a href="/cashbookByMonth?currentYear=${currentYear}&currentMonth=${currentMonth-1 }">[이전달]</a>
 	${currentYear }년${currentMonth}월
-	<a href="/admin/cashbookByMonth?currentYear=${currentYear}&currentMonth=${currentMonth+1 }">[다음달]</a>
+	<a href="/cashbookByMonth?currentYear=${currentYear}&currentMonth=${currentMonth+1 }">[다음달]</a>
 	</h3>
 	
 	<div>
@@ -68,7 +68,7 @@
 						<c:if test="${i-(firstDayOfWeek-1) > 0 }">
 							<td>
 							<div><!-- 날짜 -->
-									<a href="/admin/cashbookByDay?currentYear=${currentYear}&currentMonth=${currentMonth}&currentDay=${i-(firstDayOfWeek-1)}">
+									<a href="/cashbookByDay?currentYear=${currentYear}&currentMonth=${currentMonth}&currentDay=${i-(firstDayOfWeek-1)}">
 										${i-(firstDayOfWeek-1)}
 									</a>
 								</div>

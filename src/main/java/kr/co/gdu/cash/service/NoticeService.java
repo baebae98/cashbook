@@ -1,23 +1,38 @@
 package kr.co.gdu.cash.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import kr.co.gdu.cash.mapper.CashbookMapper;
 import kr.co.gdu.cash.mapper.NoticeMapper;
 import kr.co.gdu.cash.vo.Notice;
 
 @Service
 @Transactional
 public class NoticeService {
-	// 객체 만들어주기
-	@Autowired
-	private NoticeMapper noticeMapper;
-
-	public List<Notice> getLastestNoticeList() {
-		List<Notice> list = noticeMapper.selectLastestNoticeList();
-		return list;
+	@Autowired private NoticeMapper noticeMapper;
+	@Autowired private CashbookMapper  cashbookMapper;
+	   
+	/*
+	 * issue: 중복되는 코드가 있음. : noticeMapper.selectLastestNoticeList();
+	 */
+	public Map<String,Object> getNoticeAndInOutList() {
+	       List<Notice> noticeList = noticeMapper.selectLastestNoticeList();
+	       List<Map<String,Object>> inOutList = cashbookMapper.selectCashInOutList();
+	       Map<String,Object> map = new HashMap<String,Object>();
+	       map.put("noticeList",  noticeList);
+	       map.put("inOutList", inOutList);
+	       return map;
+	     
+	   }
+	
+	public List<Notice> getNoticeList(){
+		return noticeMapper.selectLastestNoticeList();
 	}
+
 }
