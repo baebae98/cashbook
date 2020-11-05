@@ -8,5 +8,6 @@
 <body>
 	<a href="/admin/index">index</a>
 	<a href="/admin/cashbookByMonth">cashbook</a>
+	<a href="/admin/logout">logout</a>
 </body>
 </html>
