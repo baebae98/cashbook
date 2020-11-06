@@ -13,7 +13,8 @@
 <body>
 	
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-	<ul class="navbar-nav ">
+	<div class="container">
+		<ul class="navbar-nav ">
 	 <li class="nav-item active">
 	<a class="nav-link" href="#">[CashBookProject]</a>
 	</li>
@@ -27,6 +28,7 @@
 	<a class="nav-link" href="/admin/logout">[Log-out]</a>
 	</li>
 	</ul>
+	</div>
 	</nav>
 	
 </body>

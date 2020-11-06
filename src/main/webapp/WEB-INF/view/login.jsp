@@ -14,11 +14,13 @@
 <body>
 	<!-- 상단 바 -->
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+		<div class="container">
 		 <ul class="navbar-nav">
 		 	<li class="nav-item active">
       			<a class="nav-link" href="#">[CashBookProject]</a>
    			</li>
 		 </ul>
+		 </div>
 	</nav>
 	<!-- 상단 바 밑에 있는 점보 -->
 	<div class="jumbotron jumbotron-fluid bg-warning">
