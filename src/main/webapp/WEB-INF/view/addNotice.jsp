@@ -15,9 +15,10 @@ input {
 </head>
 <body>
 	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
+	<div class="container">
 	<h1>공지사항 추가</h1>
 	<form method="post" action="/admin/addNotice">
-		<table border="1">
+		<table class="table table-bordered table-hover">
 			<tr>
 				<td>제목</td>
 					<td><input type="text" name="noticeTitle"></td>
@@ -29,5 +30,6 @@ input {
 		</table>
 			<button type="submit">공지사항 추가!</button>
 	</form>
+	</div>
 </body>
 </html>

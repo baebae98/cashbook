@@ -5,41 +5,67 @@
 <head>
 <meta charset="UTF-8">
 <title>로그인 페이지</title>
+<!-- w3schools.com bootstrap -->
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
+	<!-- 상단 바 -->
+	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+		 <ul class="navbar-nav">
+		 	<li class="nav-item active">
+      			<a class="nav-link" href="#">[CashBookProject]</a>
+   			</li>
+		 </ul>
+	</nav>
+	<!-- 상단 바 밑에 있는 점보 -->
+	<div class="jumbotron jumbotron-fluid bg-warning">
+  		<div class="container">
+  			<h1>Log-in</h1>
+  			<p>로그인 해주세요!</p>
+		</div>
+	</div>
+	<div class="container">
 	<!-- 공지 -->
 	<h1>공지</h1>
 	<div>
-		<table border="1">
+		<table class="table table-hover">
 		<thead>
 			<tr>
 				<th>notice_id</th>
 				<th>notice_title</th>
-				<th>notice_content</th>
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach var="var" items="${noticeList}">
 				<tr>
 					<td>${var.noticeId}</td>
-					<td>${var.noticeTitle}</td>
-					<td>${var.noticeContent}</td> <!-- n.getNoticeContent() -->
+					<td>${var.noticeTitle}</td>	
 				</tr>
 			</c:forEach>
 		</tbody>	
 		</table>
 	</div>
 	<h1>로그인</h1>
-	<form action="/login" method="post">
+	<form action="/login" method="post"  class="was-validated">
+		<div class="form-group">
+    <label for="uname">ID :</label>
+    <input type="text" class="form-control" id="uname" placeholder="Enter username" name="id" required>
+    	<div class="valid-feedback">Greate!</div>
+   	 <div class="invalid-feedback">Please enter your ID.</div>
+  </div>
+  <div class="form-group">
+    <label for="pwd">Password:</label>
+    <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pw" required>
+    	<div class="valid-feedback">Greate!</div>
+    	<div class="invalid-feedback">Please enter your password.</div>
+  </div>
 		<div>
-			ID : <input type="text" name="id">
-		</div>
-		<div>
-			PW : <input type="password" name="pw">
-		</div>
-		<div>
-			<button type="submit">로그인</button>
+			<button type="submit" class="btn btn-primary">로그인</button>
 		</div>
 	</form>
+	</div>
 </body>
 </html>

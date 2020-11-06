@@ -8,9 +8,10 @@
 </head>
 <body>
 	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
+	<div class="container">
 	<h1>addCashbook</h1>
 	<form method="post" action="/admin/addCashbook">
-		<table border="1">
+		<table class="table table-bordered table-hover">
 			<tr>
 				<td>cashbook_date</td>
 				<td>
@@ -49,5 +50,6 @@
 		</table>
 		<button type="submit">수입/지출 입력</button>
 	</form>
+	</div>
 </body>
 </html>

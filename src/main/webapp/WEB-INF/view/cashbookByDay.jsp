@@ -8,6 +8,7 @@
 </head>
 <body>
 	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
+	<div class="container">
 	<h1>cashbookListByDay</h1>
 	<div> 
 		<a href="/admin/cashbookByDay?target=pre&currentYear=${currentYear}&currentMonth=${currentMonth}&currentDay=${currentDay}">이전</a>
@@ -15,7 +16,7 @@
 		<a href="/admin/cashbookByDay?target=next&currentYear=${currentYear}&currentMonth=${currentMonth}&currentDay=${currentDay}">이후</a>
 	</div>
 	<a href="/admin/addCashbook?currentYear=${currentYear}&currentMonth=${currentMonth}&currentDay=${currentDay}">수입/지출 입력</a>
-	<table border="1">
+	<table class="table table-bordered table-hover">
 		<thead>
 			<tr>
 				<th>cashbookId</th>
@@ -41,5 +42,6 @@
 			</c:forEach>
 		</tbody>
 	</table>
+	</div>
 </body>
 </html>

@@ -5,32 +5,35 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!-- w3schools.com bootstrap -->
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <style type="text/css">
-	.sunday{color : #FF0000;}
+	.sunday a {
+				color: #FF0000;
+			}
+	.saturday a {
+				color: #0000FF;
+			}
+	.weekday a {
+				color: #000000;
+			}
+			
+			th {
+				width: ${100/7}%;
+			}
+			td {
+				height: 80px;
+				vertical-align: top;
+			}
 </style>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
+		<div class="container">
 	<h1>Index</h1>
-	<h3>공지사항</h3>
-	<table border="1">
-		<thead>
-			<tr>
-				<th>notice_id</th>
-				<th>notice_title</th>
-				<th>notice_date</th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach var="notice" items="${noticeList}">
-				<tr>
-					<td>${notice.noticeId}</td>
-					<td>${notice.noticeTitle}</td>
-					<td>${notice.noticeDate}</td>
-				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
 	<!-- 다이어리 -->
 	 <div>
       ${currentMonth}월 수입 합계 : ${sumIn}
@@ -39,14 +42,13 @@
       ${currentMonth}월 지출 합계 : ${sumOut}
    </div>
 
-	<h3>
-	<a href="/admin/cashbookByMonth?currentYear=${currentYear}&currentMonth=${currentMonth-1 }">[이전달]</a>
-	${currentYear }년${currentMonth}월
-	<a href="/admin/cashbookByMonth?currentYear=${currentYear}&currentMonth=${currentMonth+1 }">[다음달]</a>
-	</h3>
-	
-	<div>
-		<table border="1">
+	<ul class="pagination">
+	 <li class="page-item"><a class="page-link" href="/admin/cashbookByMonth?currentYear=${currentYear}&currentMonth=${currentMonth-1 }">[이전달]</a></li>
+			<span>${currentYear }년${currentMonth}월</span>
+	 <li class="page-item"><a class="page-link" href="/admin/cashbookByMonth?currentYear=${currentYear}&currentMonth=${currentMonth+1 }">[다음달]</a></li>
+	</ul>
+
+		<table class="table table-bordered table-hover">
 			<thead>
 				<tr>
 					<th class="sunday">일</th>		
@@ -67,11 +69,31 @@
 						</c:if>
 						<c:if test="${i-(firstDayOfWeek-1) > 0 }">
 							<td>
-							<div><!-- 날짜 -->
+							<!--<div><!-- 날짜 
 									<a href="/admin/cashbookByDay?currentYear=${currentYear}&currentMonth=${currentMonth}&currentDay=${i-(firstDayOfWeek-1)}">
 										${i-(firstDayOfWeek-1)}
 									</a>
-								</div>
+								</div>-->
+								<!-- 일요일 -->
+								<c:if test="${i % 7 == 1}">
+									<div class="sunday">
+										<a href="/admin/cashbookByDay?currentYear=${currentYear}&currentMonth=${currentMonth}&currentDay=${i-(firstDayOfWeek-1)}">${i - (firstDayOfWeek - 1)}</a>
+									</div>
+								</c:if>
+								
+								<!-- 토요일 -->
+								<c:if test="${i % 7 == 0}">
+									<div class="saturday">
+										<a href="/admin/cashbookByDay?currentYear=${currentYear}&currentMonth=${currentMonth}&currentDay=${i - (firstDayOfWeek - 1)}">${i - (firstDayOfWeek - 1)}</a>
+									</div>
+								</c:if>
+								
+								<!-- 평일 (월요일 ~ 금요일) -->
+								<c:if test="${i % 7 != 1 && i % 7 != 0}">
+									<div class="weekday">
+										<a href="/admin/cashbookByDay?currentYear=${currentYear}&currentMonth=${currentMonth}&currentDay=${i - (firstDayOfWeek - 1)}">${i - (firstDayOfWeek - 1)}</a>
+									</div>
+								</c:if>
 							<!-- 지출/수입 목록이 있는 날씨를 cashList에서 검색 -->
 							<c:forEach var="c" items="${cashList}">
 								<c:if test="${i-(firstDayOfWeek-1)== c.dday }">

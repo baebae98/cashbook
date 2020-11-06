@@ -8,9 +8,10 @@
 </head>
 <body>
 	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
+	<div class="container">
 	<h1>가계부 수정 페이지</h1>
-<form method="post" action="/admin/modifyCashbook">
-	<table border="1">
+	<form method="post" action="/admin/modifyCashbook">
+	<table class="table table-bordered table-hover">
 		<tr>
 			<td>cashbook_id</td>
 			<td><input type="text" name="cashbookId" id="cashbookId" value="${cashbook.cashbookId}" readonly="readonly"></td>
@@ -52,5 +53,6 @@
 	</table>
 	<button type="submit">입력</button>
 </form>
+	</div>
 </body>
 </html>
