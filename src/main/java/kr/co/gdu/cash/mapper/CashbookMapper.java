@@ -13,7 +13,10 @@ import kr.co.gdu.cash.vo.Cashbook;
 */
 @Mapper
 public interface CashbookMapper {
-	int insertCashbook(Cashbook cashbook) ;
+	Cashbook selectCashbookOne(int cashbookId); //상세보기(내용)
+	int deleteCashbook(int cashbookid); //삭제
+	int updateCashbook(Cashbook cashbook);//수정
+	int insertCashbook(Cashbook cashbook) ;//입력
 	 List<Map<String, Object>> selectCashInOutList();
 	 Integer selectSumCashbookPriceByInOut(Map<String, Object> map);
 	 List<Map<String,Object>> selectCashListByMonth(Map<String,Object>map);

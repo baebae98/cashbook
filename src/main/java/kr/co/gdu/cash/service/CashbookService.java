@@ -15,6 +15,20 @@ import kr.co.gdu.cash.vo.Cashbook;
 @Transactional
 public class CashbookService {
 	@Autowired private CashbookMapper cashBookMapper;
+	//cashbook 삭제
+	public void removeCashbook(int cashbookId) {
+		cashBookMapper.deleteCashbook(cashbookId);
+	}
+	
+	//cashbook 수정
+	public int modifyCashbook(Cashbook cashbook) {
+		return cashBookMapper.updateCashbook(cashbook);
+	}
+	//cashbook 상세보기
+	public Cashbook getCashbookOne(int cashbookId) {
+		Cashbook cashbook = cashBookMapper.selectCashbookOne(cashbookId);
+		return cashbook;
+	}
 	
 	public int addCashbook(Cashbook cashbook) {
 		return cashBookMapper.insertCashbook(cashbook);

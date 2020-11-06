@@ -10,7 +10,7 @@
 	<h1>공지사항 상세보기</h1>
 	<table border="1">
 		<tr>
-			<td>noticeID</td>
+			<td>noticeId</td>
 			<td>${notice.noticeId}</td>
 		</tr>
 		<tr>

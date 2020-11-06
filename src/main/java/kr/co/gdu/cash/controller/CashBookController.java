@@ -27,7 +27,41 @@ public class CashBookController {
 	@Autowired private CashbookService cashbookService;
 	@Autowired private CategoryService categoryService;
 	
-	//지출 수입 입력액션
+	//cashbook 삭제
+	@GetMapping("/admin/removeCashbook")
+	public String removeCashbook(@RequestParam(value="cashbookId")int cashbookId) {
+		cashbookService.removeCashbook(cashbookId);
+		return "redirect:/admin/cashbookByMonth";
+	}
+	
+	//cashbook 수정 액션
+	@PostMapping("/admin/modifyCashbook")
+	public String modifyCashbook(Cashbook cashbook) {
+		cashbookService.modifyCashbook(cashbook);
+		return "redirect:/admin/cashbookByMonth?cashbookId="+cashbook.getCashbookId();
+	}
+	
+	//cashbook 수정 폼
+	@GetMapping("/admin/modifyCashbook")
+	public String modifyNotice(Model model, 
+			@RequestParam(value = "cashbookId") int cashbookId) {
+		Cashbook cashbook = cashbookService.getCashbookOne(cashbookId);
+		List<Category> categoryList = categoryService.getCategoryList();
+		
+		model.addAttribute("cashbook",cashbook);
+		model.addAttribute("categoryList",categoryList);
+		
+		return "modifyCashbook";
+	}
+	/*//casgbook 상세보기
+	@GetMapping("/admin/cashbookOne")
+	public String cashbookOne(Model model,@RequestParam(value="cashbookId")int cashbookId) {
+		Cashbook cashbook = cashbookService.getCashbookOne(cashbookId);
+		model.addAttribute("cashbook",cashbook);
+		return "cashbookOne";
+	}*/
+	
+	//cashbook 입력액션
 	@PostMapping("/admin/addCashbook") //session값이 없으면 들어오지 못함.
 	public String addCashbook(Cashbook cashbook) { //커맨드객체
 		System.out.println(cashbook);
@@ -36,7 +70,7 @@ public class CashBookController {
 		return "redirect:/admin/cashbookByMonth"; //response.sendRedirecr()역할. -> /admin/cashbookByDay
 	}
 	
-	// 지출 수입 입력
+	// cashbook 입력 폼
 	@GetMapping("/admin/addCashbook") //value 생략가능
 	public String addCashbook(Model model,
 			@RequestParam(name = "currentYear",required = true)int currentYear,
@@ -48,14 +82,29 @@ public class CashBookController {
 	}
 	
 	
-	//지출 수입 상세보기
+	//cashbook 상세보기 페이지
 	@GetMapping("/admin/cashbookByDay") // value 생략가능
 	public String cashbookByDay(Model model, 
-			@RequestParam(name = "currentYear",required = true)int currentYear,
+			@RequestParam(name="target",defaultValue = "") String target,		//pre, next
+			@RequestParam(name = "currentYear",required = true)int currentYear, // request.getParameter("currentYear", currentYear);와 동일한 코드
 			@RequestParam(name = "currentMonth",required = true)int currentMonth,
 			@RequestParam(name = "currentDay",required = true)int currentDay) {
-		List<Cashbook> cashbookList = cashbookService.getCashbookListByDay(currentYear, currentMonth, currentDay);
-		model.addAttribute("cashbookList", cashbookList);
+		
+			Calendar targetDay = Calendar.getInstance();
+			targetDay.set(Calendar.YEAR,currentYear);
+			targetDay.set(Calendar.MONTH, currentMonth-1);
+			targetDay.set(Calendar.DATE, currentDay);
+			if(target.equals("pre")){
+				targetDay.add(Calendar.DATE, -1);//-
+			}else if(target.equals("next")) {
+				targetDay.add(Calendar.DATE, 1);//+
+			}
+			
+			List<Cashbook> cashbookList = cashbookService.getCashbookListByDay(targetDay.get(Calendar.YEAR), targetDay.get(Calendar.MONTH)+1, targetDay.get(Calendar.DATE));
+			model.addAttribute("cashbookList", cashbookList);
+			model.addAttribute("currentYear",targetDay.get(Calendar.YEAR));
+			model.addAttribute("currentMonth",targetDay.get(Calendar.MONTH)+1);
+			model.addAttribute("currentDay",targetDay.get(Calendar.DATE));
 		return "cashbookByDay";
 	}
 	
@@ -72,6 +121,7 @@ public class CashBookController {
 		 */
 		Calendar currentDay = Calendar.getInstance();// 2020년 11월 2일.
 		//currentYear 넘어오고, currentMonth도  넘어오면 
+		//CalendarAPI 수정해야함 - > currentDay.add(Calendar.Month를 -1 or +1 )
 		if(currentYear != -1 && currentMonth != -1) {
 			if(currentMonth == 0) {
 				currentMonth = 12; //currentMonth가 0이면 12월로 바뀌고

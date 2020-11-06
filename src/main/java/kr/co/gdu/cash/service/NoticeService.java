@@ -18,11 +18,11 @@ public class NoticeService {
 	@Autowired private NoticeMapper noticeMapper;
 	@Autowired private CashbookMapper  cashbookMapper;
 	
-	//삭제
+	//공지사항 삭제
 	public void removeNotice(int noticeId) {
 		noticeMapper.deleteNotice(noticeId);
 	}
-	//수정
+	//공지사항 수정
 	public int modifyNotice(Notice notice) {
 		 return noticeMapper.updateNotice(notice);
 		
