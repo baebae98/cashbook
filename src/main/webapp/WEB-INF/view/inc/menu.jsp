@@ -22,10 +22,14 @@
 	<a class="nav-link" href="/admin/index">[HOME]</a>
 	</li>
 	 <li class="nav-item active">
-	<a class="nav-link" href="/admin/cashbookByMonth">[CashBook]</a>
+	<!-- <a class="nav-link" href="/admin/cashbookByMonth">[CashBook]</a>-->
+	<a class="nav-link" href="/admin/cashbookByMonth/-1/-1">[CashBook]</a></li>
 	</li>
 	 <li class="nav-item active">
 	<a class="nav-link" href="/admin/logout">[Log-out]</a>
+	</li>
+	 <li class="nav-item active">
+	<a class="nav-link" href="http://localhost:8080/cashStats.html">cashStats.html</a>
 	</li>
 	</ul>
 	</div>

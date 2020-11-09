@@ -35,9 +35,8 @@
 			<c:forEach var="n" items="${noticeList}">
 				<tr>
 					<td>
-						<a href="/admin/noticeOne?noticeId=${n.noticeId}">
-							${n.noticeId}
-						</a>
+						<!--<a href="/admin/noticeOne?noticeId=${n.noticeId}">${n.noticeId}</a>-->
+						<a href="/admin/noticeOne/${n.noticeId}">${n.noticeId}</a>
 					</td>
 					<td>${n.noticeTitle}</td>
 					<td>${n.noticeDate}</td>
@@ -48,14 +47,18 @@
 	
 		<ul class="pagination">
 		<c:if test="${currentPage == 1 }">
-		 <li class="page-item"><a class="page-link" href="/admin/noticeList?currentPage=${currentPage+1}">다음</a></li>
+		<!-- <li class="page-item"><a class="page-link" href="/admin/noticeList?currentPage=${currentPage+1}">다음</a></li>-->
+			<li class="page-item"><a class="page-link" href="/admin/noticeList/${currentPage+1}">다음</a></li>
 	</c:if>
 	<c:if test="${currentPage == lastPage }">
-		<li class="page-item"><a class="page-link" href="/admin/noticeList?currentPage=${currentPage-1}">이전</a></li>
+		<!-- <li class="page-item"><a class="page-link" href="/admin/noticeList?currentPage=${currentPage-1}">이전</a></li>-->
+		<li class="page-item"><a class="page-link" href="/admin/noticeList/${currentPage-1}">이전</a></li>
 	</c:if>
 	<c:if test="${currentPage > 1 && currentPage < lastPage}">
-		<li class="page-item"><a class="page-link" href="/admin/noticeList?currentPage=${currentPage-1}">이전</a></li>
-		<li class="page-item"><a class="page-link" href="/admin/noticeList?currentPage=${currentPage+1}">다음</a></li>
+		<!--<li class="page-item"><a class="page-link" href="/admin/noticeList?currentPage=${currentPage-1}">이전</a></li>
+		<li class="page-item"><a class="page-link" href="/admin/noticeList?currentPage=${currentPage+1}">다음</a></li>-->
+		<li class="page-item"><a class="page-link" href="/admin/noticeList/${currentPage-1}">이전</a></li>
+		<li class="page-item"><a class="page-link" href="/admin/noticeList/${currentPage+1}">다음</a></li>
 	</c:if>
 	</ul>
 	</div>

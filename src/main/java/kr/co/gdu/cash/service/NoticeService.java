@@ -59,7 +59,7 @@ public class NoticeService {
 	}
 	   
 	/*
-	 * issue: 중복되는 코드가 있음. : noticeMapper.selectLastestNoticeList();
+	 * issue: 중복되는 코드가 있음. : noticeMapper.selectLastestNoticeList(); 추후 분리/제거해야함.
 	 */
 	public Map<String,Object> getNoticeAndInOutList() {
 	       List<Notice> noticeList = noticeMapper.selectLastestNoticeList();

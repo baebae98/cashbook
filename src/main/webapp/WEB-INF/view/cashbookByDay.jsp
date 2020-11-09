@@ -11,18 +11,25 @@
 	<div class="container">
 	<h1>cashbookListByDay</h1>
 	<div> 
-		<a href="/admin/cashbookByDay?target=pre&currentYear=${currentYear}&currentMonth=${currentMonth}&currentDay=${currentDay}">이전</a>
+		<!-- ?target=pre&currentYear=${currentYear}&currentMonth=${currentMonth}&currentDay=${currentDay} -->
+		<a href="/admin/cashbookByDay/pre/${currentYear}/${currentMonth}/${currentDay}">
+		이전
+		</a>
 			<span>${currentYear}년 ${currentMonth}월 ${currentDay}일</span>
-		<a href="/admin/cashbookByDay?target=next&currentYear=${currentYear}&currentMonth=${currentMonth}&currentDay=${currentDay}">이후</a>
+		<!-- ?target=next&currentYear=${currentYear}&currentMonth=${currentMonth}&currentDay=${currentDay} -->
+		<a href="/admin/cashbookByDay/next/${currentYear}/${currentMonth}/${currentDay}">
+		이후
+		</a>
 	</div>
-	<a href="/admin/addCashbook?currentYear=${currentYear}&currentMonth=${currentMonth}&currentDay=${currentDay}">수입/지출 입력</a>
+	<!-- <a href="/admin/addCashbook?currentYear=${currentYear}&currentMonth=${currentMonth}&currentDay=${currentDay}">수입/지출 입력</a>-->
+	<a href="/admin/addCashbook/${currentYear}/${currentMonth}/${currentDay}">수입/지출 입력</a>
 	<table class="table table-bordered table-hover">
 		<thead>
 			<tr>
 				<th>cashbookId</th>
 				<th>cashbookKind</th>
 				<th>categoryName</th>
-				<th>cashbookPrice</th>
+				<th>cashbookPrice</th> 
 				<th>cashbookContent</th>
 				<th>수정</th>
 				<th>삭제</th>
@@ -36,8 +43,10 @@
 				<td>${c.categoryName}</td>
 				<td>${c.cashbookPrice}</td>
 				<td>${c.cashbookContent}</td>
-				<td><a href="/admin/modifyCashbook?cashbookId=${c.cashbookId}">수정</a></td>
-				<td><a href="/admin/removeCashbook?cashbookId=${c.cashbookId}">삭제</a></td>
+				<!-- <td><a href="/admin/modifyCashbook?cashbookId=${c.cashbookId}">수정</a></td>
+				<td><a href="/admin/removeCashbook?cashbookId=${c.cashbookId}">삭제</a></td>-->
+				<td><a href="/admin/modifyCashbook/${c.cashbookId}">수정</a></td>
+				<td><a href="/admin/removeCashbook/${c.cashbookId}">삭제</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>

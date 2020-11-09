@@ -43,9 +43,12 @@
    </div>
 
 	<ul class="pagination">
-	 <li class="page-item"><a class="page-link" href="/admin/cashbookByMonth?currentYear=${currentYear}&currentMonth=${currentMonth-1 }">[이전달]</a></li>
+	<!-- <li class="page-item"><a class="page-link" href="/admin/cashbookByMonth?currentYear=${currentYear}&currentMonth=${currentMonth-1 }">[이전달]</a></li>
 			<span>${currentYear }년${currentMonth}월</span>
-	 <li class="page-item"><a class="page-link" href="/admin/cashbookByMonth?currentYear=${currentYear}&currentMonth=${currentMonth+1 }">[다음달]</a></li>
+	 <li class="page-item"><a class="page-link" href="/admin/cashbookByMonth?currentYear=${currentYear}&currentMonth=${currentMonth+1 }">[다음달]</a></li>-->
+		<li class="page-item"><a href="/admin/cashbookByMonth/${currentYear}/${currentMonth - 1}">[이전달]</a></li>
+							<span>${currentYear }년${currentMonth}월</span>
+		<li class="page-item"><a href="/admin/cashbookByMonth/${currentYear}/${currentMonth + 1}">[다음달]</a></li>
 	</ul>
 
 		<table class="table table-bordered table-hover">
@@ -77,31 +80,34 @@
 								<!-- 일요일 -->
 								<c:if test="${i % 7 == 1}">
 									<div class="sunday">
-										<a href="/admin/cashbookByDay?currentYear=${currentYear}&currentMonth=${currentMonth}&currentDay=${i-(firstDayOfWeek-1)}">${i - (firstDayOfWeek - 1)}</a>
+										<!--<a href="/admin/cashbookByDay?currentYear=${currentYear}&currentMonth=${currentMonth}&currentDay=${i-(firstDayOfWeek-1)}">${i - (firstDayOfWeek - 1)}  -->
+										<a href="/admin/cashbookByDay/sunday/${currentYear}/${currentMonth}/${i-(firstDayOfWeek-1)}">${i-(firstDayOfWeek-1)}</a>
 									</div>
 								</c:if>
 								
 								<!-- 토요일 -->
 								<c:if test="${i % 7 == 0}">
 									<div class="saturday">
-										<a href="/admin/cashbookByDay?currentYear=${currentYear}&currentMonth=${currentMonth}&currentDay=${i - (firstDayOfWeek - 1)}">${i - (firstDayOfWeek - 1)}</a>
+										<!--<a href="/admin/cashbookByDay?currentYear=${currentYear}&currentMonth=${currentMonth}&currentDay=${i - (firstDayOfWeek - 1)}">${i - (firstDayOfWeek - 1)}</a>  -->
+										<a href="/admin/cashbookByDay/saturday/${currentYear}/${currentMonth}/${i - (firstDayOfWeek - 1)}">${i - (firstDayOfWeek - 1)}</a>
 									</div>
 								</c:if>
 								
 								<!-- 평일 (월요일 ~ 금요일) -->
 								<c:if test="${i % 7 != 1 && i % 7 != 0}">
 									<div class="weekday">
-										<a href="/admin/cashbookByDay?currentYear=${currentYear}&currentMonth=${currentMonth}&currentDay=${i - (firstDayOfWeek - 1)}">${i - (firstDayOfWeek - 1)}</a>
+										<!-- <a href="/admin/cashbookByDay?currentYear=${currentYear}&currentMonth=${currentMonth}&currentDay=${i - (firstDayOfWeek - 1)}">${i - (firstDayOfWeek - 1)}</a> -->
+										<a href="/admin/cashbookByDay/weekday/${currentYear}/${currentMonth}/${i - (firstDayOfWeek - 1)}">${i - (firstDayOfWeek - 1)}</a>
 									</div>
 								</c:if>
 							<!-- 지출/수입 목록이 있는 날씨를 cashList에서 검색 -->
 							<c:forEach var="c" items="${cashList}">
 								<c:if test="${i-(firstDayOfWeek-1)== c.dday }">
 									<c:if test="${c.cashbookKind == '수입' }">
-										<div>수입 : ${c.cashbookPrice }</div>
+										<div><font color="blue">수입 :</font> ${c.cashbookPrice }</div>
 								</c:if>
 									<c:if test="${c.cashbookKind == '지출' }">
-										<div>지출 : ${c.cashbookPrice }</div>
+										<div><font color="red">지출 :</font>${c.cashbookPrice }</div>
 								</c:if>
 								</c:if>
 							</c:forEach>

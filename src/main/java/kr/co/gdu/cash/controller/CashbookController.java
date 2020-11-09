@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -20,7 +21,7 @@ import kr.co.gdu.cash.vo.Category;
 import kr.co.gdu.cash.vo.Notice;
 
 @Controller
-public class CashBookController {
+public class CashbookController {
 	/*@Autowired
 	private NoticeService indexService; // new IndexService랑 똑같음*/
 	
@@ -28,23 +29,27 @@ public class CashBookController {
 	@Autowired private CategoryService categoryService;
 	
 	//cashbook 삭제
-	@GetMapping("/admin/removeCashbook")
-	public String removeCashbook(@RequestParam(value="cashbookId")int cashbookId) {
+	@GetMapping("/admin/removeCashbook/{cashbookId}")
+	public String removeCashbook(
+			//@RequestParam(value="cashbookId")int cashbookId) {
+			@PathVariable(value = "cashbookId") int cashbookId) {
 		cashbookService.removeCashbook(cashbookId);
-		return "redirect:/admin/cashbookByMonth";
+		return "redirect:/admin/cashbookByMonth/-1/-1";
 	}
 	
 	//cashbook 수정 액션
 	@PostMapping("/admin/modifyCashbook")
 	public String modifyCashbook(Cashbook cashbook) {
 		cashbookService.modifyCashbook(cashbook);
-		return "redirect:/admin/cashbookByMonth?cashbookId="+cashbook.getCashbookId();
+		//return "redirect:/admin/cashbookByMonth?cashbookId="+cashbook.getCashbookId();
+		return "redirect:/admin/cashbookByMonth/-1/-1";
 	}
 	
 	//cashbook 수정 폼
-	@GetMapping("/admin/modifyCashbook")
+	@GetMapping("/admin/modifyCashbook/{cashbookId}")
 	public String modifyNotice(Model model, 
-			@RequestParam(value = "cashbookId") int cashbookId) {
+			//@RequestParam(value = "cashbookId") int cashbookId) {
+			@PathVariable(value = "cashbookId")int cashbookId) {
 		Cashbook cashbook = cashbookService.getCashbookOne(cashbookId);
 		List<Category> categoryList = categoryService.getCategoryList();
 		
@@ -64,31 +69,44 @@ public class CashBookController {
 	//cashbook 입력액션
 	@PostMapping("/admin/addCashbook") //session값이 없으면 들어오지 못함.
 	public String addCashbook(Cashbook cashbook) { //커맨드객체
+		//디버깅
 		System.out.println(cashbook);
-		//System.out.println("cashbook 입력 :");
 		cashbookService.addCashbook(cashbook);//입력하면
-		return "redirect:/admin/cashbookByMonth"; //response.sendRedirecr()역할. -> /admin/cashbookByDay
+		return "redirect:/admin/cashbookByMonth/-1/-1"; //response.sendRedirecr()역할. -> /admin/cashbookByDay
 	}
 	
 	// cashbook 입력 폼
-	@GetMapping("/admin/addCashbook") //value 생략가능
+	@GetMapping("/admin/addCashbook/{currentYear}/{currentMonth}/{currentDay}") //value 생략가능
 	public String addCashbook(Model model,
-			@RequestParam(name = "currentYear",required = true)int currentYear,
-			@RequestParam(name = "currentMonth",required = true)int currentMonth,
-			@RequestParam(name = "currentDay",required = true)int currentDay) {
+			//@RequestParam(name = "currentYear",required = true)int currentYear,
+			//@RequestParam(name = "currentMonth",required = true)int currentMonth,
+			//@RequestParam(name = "currentDay",required = true)int currentDay) {
+			@PathVariable(name = "currentYear", required = true) int currentYear,
+			@PathVariable(name = "currentMonth", required = true) int currentMonth,
+			@PathVariable(name = "currentDay", required = true) int currentDay){
 		List<Category> categoryList = categoryService.getCategoryList();
 		model.addAttribute("categoryList",categoryList);
-		return "addCashbook"; //포워딩 역할을 함.
+		model.addAttribute("currentYear", currentYear);
+		model.addAttribute("currentMonth", currentMonth);
+		model.addAttribute("currentDay", currentDay);
+		
+		return "addCashbook"; //포워딩 동일한 역할을 함.
 	}
 	
 	
 	//cashbook 상세보기 페이지
-	@GetMapping("/admin/cashbookByDay") // value 생략가능
+	@GetMapping("/admin/cashbookByDay/{target}/{currentYear}/{currentMonth}/{currentDay}") // value 생략가능
 	public String cashbookByDay(Model model, 
-			@RequestParam(name="target",defaultValue = "") String target,		//pre, next
+			/*
+			 * @RequestParam(name="target",defaultValue = "") String target,		//pre, next
 			@RequestParam(name = "currentYear",required = true)int currentYear, // request.getParameter("currentYear", currentYear);와 동일한 코드
 			@RequestParam(name = "currentMonth",required = true)int currentMonth,
 			@RequestParam(name = "currentDay",required = true)int currentDay) {
+			 */
+			@PathVariable(name="target") String target,		//pre, next
+			@PathVariable(name = "currentYear",required = true)int currentYear, // request.getParameter("currentYear", currentYear);와 동일한 코드
+			@PathVariable(name = "currentMonth",required = true)int currentMonth,
+			@PathVariable(name = "currentDay",required = true)int currentDay) {
 		
 			Calendar targetDay = Calendar.getInstance();
 			targetDay.set(Calendar.YEAR,currentYear);
@@ -108,12 +126,15 @@ public class CashBookController {
 		return "cashbookByDay";
 	}
 	
-	//
-	@GetMapping(value ="/admin/cashbookByMonth" )
+	//cashbook 목록
+	@GetMapping(value ="/admin/cashbookByMonth/{currentYear}/{currentMonth}" )
 	//requestparam으로 paramMonth가 null이면 0으로 바꿔라(int로 형변환을 해야하기 떄문에) = ("request.getParamater("paramMonth");) 
 	public String cashbookByMonth(Model model,
-			@RequestParam(name = "currentYear",defaultValue = "-1")int currentYear,
-			@RequestParam(name="currentMonth",defaultValue = "-1") int currentMonth) {
+			//@RequestParam(name = "currentYear",defaultValue = "-1")int currentYear,
+			//@RequestParam(name="currentMonth",defaultValue = "-1") int currentMonth) {
+			@PathVariable(name = "currentYear") int currentYear,
+			@PathVariable(name = "currentMonth") int currentMonth) {
+			
 		
 		//1. 요청분석
 		/*
@@ -140,8 +161,8 @@ public class CashBookController {
 		int lastDay = currentDay.getActualMaximum(Calendar.DATE);
 		int firstDayOfWeek = currentDay.get(Calendar.DAY_OF_WEEK);
 		//----------------------------------------------------------------
-		int sumIn = cashbookService.getSumCashbookPriceByInOut("지출", currentYear, currentMonth);
-		int sumOut= cashbookService.getSumCashbookPriceByInOut("수입", currentYear, currentMonth);
+		int sumIn = cashbookService.getSumCashbookPriceByInOut("수입", currentYear, currentMonth);
+		int sumOut= cashbookService.getSumCashbookPriceByInOut("지출", currentYear, currentMonth);
 		
 		//----------------------------------------------------------------
 		List<Map<String,Object>> cashList = cashbookService.getCashListByMonth(currentYear, currentMonth);
