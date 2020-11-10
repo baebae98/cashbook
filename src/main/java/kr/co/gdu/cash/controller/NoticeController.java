@@ -20,17 +20,19 @@ public class NoticeController {
 	@Autowired private NoticeService noticeService;
 	// 공지 목록
 		@SuppressWarnings("unchecked")
-		@GetMapping("/admin/noticeList/{currentPage}")
+		@GetMapping("/admin/noticeList/{currentPage}/{rowPerPage}")
 		public String noticeList(Model model,
-							@RequestParam(value = "currentPage", defaultValue = "1") int currentPage,
-							@RequestParam(value = "rowPerPage", defaultValue = "5") int rowPerPage) {
-							//@PathVariable(value = "currentPage") int currentPage,
-							//@PathVariable(value = "rowPerPage") int rowPerPage) {
+							//@RequestParam(value = "currentPage", defaultValue = "1") int currentPage,
+							//@RequestParam(value = "rowPerPage", defaultValue = "5") int rowPerPage) {
+							@PathVariable(value = "currentPage") int currentPage,
+							@PathVariable(value = "rowPerPage") int rowPerPage) {
 							Map<String, Object> map = noticeService.getNoticeListByPage(currentPage, rowPerPage);
-			
+		
+							
 			List<Notice> noticeList = (List<Notice>)map.get("noticeList");
 			int lastPage = (int)map.get("lastPage");
 			
+			//model.addAttribute("rowPerPage",rowPerPage);
 			model.addAttribute("currentPage", currentPage);
 			model.addAttribute("noticeList", noticeList);
 			model.addAttribute("lastPage", lastPage);

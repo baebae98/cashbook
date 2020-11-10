@@ -23,7 +23,7 @@
 	</div>
 	<div class="container">
 	<!-- 공지 -->
-	<div>공지사항<a style="float:right;" class="text-dark" href="/admin/noticeList/1">more</a></div>
+	<div>공지사항<a style="float:right;" class="text-dark" href="/admin/noticeList/1/5">more</a></div>
 	<div>
 		<table class="table table-hover">
 		<thead>
