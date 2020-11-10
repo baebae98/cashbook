@@ -10,6 +10,13 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+	//금액 숫자에 1000단위 콤마를 찍는 함수
+	function addComma(num) {
+				let regexp = /\B(?=(\d{3})+(?!\d))/g;
+				return num.toString().replace(regexp, ',');
+			}
+  </script>
 <style type="text/css">
 	.sunday a {
 				color: #FF0000;
@@ -28,6 +35,27 @@
 				height: 80px;
 				vertical-align: top;
 			}
+	.cashbookTableMenu {
+				width: 100%;
+				text-align: center;
+			}
+			
+	.cashbookTableMenu td {
+				vertical-align: middle;
+			}
+			th {
+				width: ${100/7}%;
+				text-align: center;
+				background-color: #F9F9FB;
+			}
+			td {
+				height: 120px;
+				vertical-align: top;
+			}
+			.diaryTable td {
+				height: 130px;
+				vertical-align: top;
+			}
 </style>
 </head>
 <body>
@@ -39,23 +67,50 @@
 		</div>
 	</div>
 		<div class="container">
-	<!-- 다이어리 -->
-	 <div>
-      ${currentMonth}월 수입 합계 : ${sumIn}
-   </div>
-   <div>
-      ${currentMonth}월 지출 합계 : ${sumOut}
-   </div>
-
-	<ul class="pagination">
-	<!-- <li class="page-item"><a class="page-link" href="/admin/cashbookByMonth?currentYear=${currentYear}&currentMonth=${currentMonth-1 }">[이전달]</a></li>
+	<!--월 수입/지출 합계 -->
+	<table class="cashbookTableMenu">
+		<tr>
+			<td width="20%">
+				<div class="card">
+					<div class="card-header bg-primary"><font size="3em" color="white">수입 합계</font></div>
+				<div class="card-body">
+					<font size="5.5em"><script>document.write(addComma(${sumIn}));</script></font>
+					</div>
+				</div>
+			</td>
+			
+			<td width="15%" style="text-align: right;">
+				
+				<a class="btn btn-dark" href="/admin/cashbookByMonth/${currentYear}/${currentMonth - 1}">←</a>
+				
+			</td>
+			<td width="30%">
+				<h3>${currentYear}년 ${currentMonth}월</h3>
+			</td>
+			<td width="15%" style="text-align: left;">
+				<a class="btn btn-dark" href="/admin/cashbookByMonth/${currentYear}/${currentMonth + 1}">→</a>
+			</td>
+			<td width="20%">
+				<div class="card">
+					<div class="card-header bg-danger"><font size="3em" color="white">지출 합계</font></div>
+				<div class="card-body">
+					<font size="5.5em"><script>document.write(addComma(${sumOut}));</script></font>
+						</div>
+					</div>
+				</td>
+			</tr>
+	</table>
+	<!-- <ul class="pagination">
+	 <li class="page-item"><a class="page-link" href="/admin/cashbookByMonth?currentYear=${currentYear}&currentMonth=${currentMonth-1 }">[이전달]</a></li>
 			<span>${currentYear }년${currentMonth}월</span>
-	 <li class="page-item"><a class="page-link" href="/admin/cashbookByMonth?currentYear=${currentYear}&currentMonth=${currentMonth+1 }">[다음달]</a></li>-->
+	 <li class="page-item"><a class="page-link" href="/admin/cashbookByMonth?currentYear=${currentYear}&currentMonth=${currentMonth+1 }">[다음달]</a></li>
+		
 		<li class="page-item"><a href="/admin/cashbookByMonth/${currentYear}/${currentMonth - 1}">[이전달]</a></li>
 							<span>${currentYear }년${currentMonth}월</span>
 		<li class="page-item"><a href="/admin/cashbookByMonth/${currentYear}/${currentMonth + 1}">[다음달]</a></li>
-	</ul>
-
+	</ul>-->
+	<!-- 다이어리
+	 -->
 		<table class="table table-bordered table-hover">
 			<thead>
 				<tr>
@@ -109,10 +164,10 @@
 							<c:forEach var="c" items="${cashList}">
 								<c:if test="${i-(firstDayOfWeek-1)== c.dday }">
 									<c:if test="${c.cashbookKind == '수입' }">
-										<div><font color="blue">수입 :</font> ${c.cashbookPrice }</div>
+										<div><font color="blue">수입 :</font><script>document.write(addComma(${c.cashbookPrice}));</script></div>
 								</c:if>
 									<c:if test="${c.cashbookKind == '지출' }">
-										<div><font color="red">지출 :</font>${c.cashbookPrice }</div>
+										<div><font color="red">지출 :</font><script>document.write(addComma(${c.cashbookPrice}));</script></div>
 								</c:if>
 								</c:if>
 							</c:forEach>

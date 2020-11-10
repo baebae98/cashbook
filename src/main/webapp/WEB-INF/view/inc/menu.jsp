@@ -32,7 +32,7 @@
 	<a class="nav-link" href="/admin/logout">[Log-out]</a>
 	</li>
 	 <li class="nav-item active">
-	<a class="nav-link" href="http://localhost:8080/cashStats.html">cashStats.html</a>
+	<a class="nav-link" href="http://localhost:8080/cashStats.html">[cashChart]</a>
 	</li>
 	</ul>
 	</div>

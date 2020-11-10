@@ -49,7 +49,7 @@ public class NoticeController {
 	@PostMapping("/admin/addNotice")
 	public String addNotice(Notice notice) {
 		noticeService.addNotice(notice);
-		return "redirect:/admin/noticeList/1";
+		return "redirect:/admin/noticeList/1/5";
 	}
 	// 공지 상세 보기
 	@GetMapping("/admin/noticeOne/{noticeId}")

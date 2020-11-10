@@ -11,6 +11,13 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+	//금액 숫자에 1000단위 콤마를 찍는 함수
+	function addComma(num) {
+				let regexp = /\B(?=(\d{3})+(?!\d))/g;
+				return num.toString().replace(regexp, ',');
+			}
+  </script>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
@@ -23,7 +30,7 @@
 	</div>
 	<div class="container">
 	<!-- 공지 -->
-	<div>공지사항<a style="float:right;" class="text-dark" href="/admin/noticeList/1/5">more</a></div>
+	<div>공지사항<a style="float:right;" class="text-dark btn btn-link" href="/admin/noticeList/1/5">more</a></div>
 	<div>
 		<table class="table table-hover">
 		<thead>
@@ -43,7 +50,7 @@
 		</table>
 	</div>
 	<!-- 수입/지출 -->
-	<h1>수입/지출 통계</h1>
+	<div>수입/지출 통계<a style="float:right;" class="text-dark btn btn-link" href="/admin/cashbookByMonth/-1/-1">more</a></div>
 	<div>
 			<table class="table table-hover">
 		<thead>
@@ -56,11 +63,12 @@
 		<tbody>
 			<c:forEach var="io" items="${inOutList}">
 				<tr>
-					<!-- 날짜 , 수입 , 지출 , 합계 -->
+				
+					<!-- 날짜 , 수입 , 지출 , 합계 --><!-- 천단위 콤마 추가 addcomma.. -->
 					<td>${io["날짜"]}</td>  <!-- io.get("날씨") -->
-					<td>${io["수입"]}</td>
-					<td>${io["지출"]}</td>
-					<td>${io["합계"]}</td>
+					<td><script>document.write(addComma(${io["수입"]}));</script></td>
+					<td><script>document.write(addComma(${io["지출"]}));</script></td>
+					<td><script>document.write(addComma(${io["합계"]}));</script></td>
 				</tr>
 			</c:forEach>
 		</tbody>	
