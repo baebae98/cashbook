@@ -15,8 +15,13 @@ input {
 </head>
 <body>
 	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
+	<div class="jumbotron jumbotron-fluid bg-warning">
+  		<div class="container">
+  			<h1>AddNotice</h1>
+  			<p>공지사항 추가페이지 입니다.</p>
+		</div>
+	</div>
 	<div class="container">
-	<h1>공지사항 추가</h1>
 	<form method="post" action="/admin/addNotice">
 		<table class="table table-bordered table-hover">
 			<tr>

@@ -8,8 +8,13 @@
 </head>
 <body>
 	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
+	<div class="jumbotron jumbotron-fluid bg-warning">
+  		<div class="container">
+  			<h1>modifyCashbook</h1>
+  			<p>가계부 수정페이지 입니다.</p>
+		</div>
+	</div>
 	<div class="container">
-	<h1>가계부 수정 페이지</h1>
 	<form method="post" action="/admin/modifyCashbook">
 	<table class="table table-bordered table-hover">
 		<tr>

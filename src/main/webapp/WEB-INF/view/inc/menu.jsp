@@ -23,7 +23,10 @@
 	</li>
 	 <li class="nav-item active">
 	<!-- <a class="nav-link" href="/admin/cashbookByMonth">[CashBook]</a>-->
-	<a class="nav-link" href="/admin/cashbookByMonth/-1/-1">[CashBook]</a></li>
+	<a class="nav-link" href="/admin/cashbookByMonth/-1/-1">[CashBook]</a>
+	</li>
+	<li class="nav-item active">
+		<a class="nav-link" href="http://localhost/admin/noticeList/1/5">[Notice]</a>
 	</li>
 	 <li class="nav-item active">
 	<a class="nav-link" href="/admin/logout">[Log-out]</a>

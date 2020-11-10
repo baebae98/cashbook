@@ -32,8 +32,13 @@
 </head>
 <body>
 	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
+			<div class="jumbotron jumbotron-fluid bg-warning">
+  		<div class="container">
+  			<h1>CashbookByMonth</h1>
+  			<p>CashbookByMonth페이지 입니다.</p>
+		</div>
+	</div>
 		<div class="container">
-	<h1>Index</h1>
 	<!-- 다이어리 -->
 	 <div>
       ${currentMonth}월 수입 합계 : ${sumIn}

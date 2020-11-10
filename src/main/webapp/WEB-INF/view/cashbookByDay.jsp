@@ -8,8 +8,13 @@
 </head>
 <body>
 	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
+	<div class="jumbotron jumbotron-fluid bg-warning">
+  		<div class="container">
+  			<h1>CashbookByDay</h1>
+  			<p>CashbookByDay페이지 입니다.</p>
+		</div>
+	</div>
 	<div class="container">
-	<h1>cashbookListByDay</h1>
 	<div> 
 		<!-- ?target=pre&currentYear=${currentYear}&currentMonth=${currentMonth}&currentDay=${currentDay} -->
 		<a href="/admin/cashbookByDay/pre/${currentYear}/${currentMonth}/${currentDay}">
