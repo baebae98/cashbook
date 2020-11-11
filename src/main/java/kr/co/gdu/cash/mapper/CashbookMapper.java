@@ -13,6 +13,11 @@ import kr.co.gdu.cash.vo.Cashbook;
 */
 @Mapper
 public interface CashbookMapper {
+	// 인수(Map) : beginRow , rowPerPage
+	List<Cashbook> selectCashbookListByPage(Map<String,Object>map); // cashbookList를 전체 출력해보기 위해
+	//전체 CASHBOOKlIST ->엑셀파일
+	List<Cashbook> selectCashbookListAll();
+	
 	Cashbook selectCashbookOne(int cashbookId); //상세보기(내용)
 	int deleteCashbook(int cashbookid); //삭제
 	int updateCashbook(Cashbook cashbook);//수정

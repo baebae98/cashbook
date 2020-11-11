@@ -28,6 +28,18 @@ public class CashbookController {
 	@Autowired private CashbookService cashbookService;
 	@Autowired private CategoryService categoryService;
 	
+	//cashbook 전체목록 출력
+	@GetMapping("/admin/cashbookList/{currentPage}")
+	public String cashbookList(Model model,
+			@PathVariable(name = "currentPage", required = true)int currentPage) {
+		int rowPerPage = 20;
+		List<Cashbook> cashbookList = cashbookService.getCashbookListByPage(currentPage, rowPerPage);
+		model.addAttribute("cashbookList",cashbookList);
+		return "cashbookList";
+	}
+		
+	
+	
 	//cashbook 삭제
 	@GetMapping("/admin/removeCashbook/{cashbookId}")
 	public String removeCashbook(
