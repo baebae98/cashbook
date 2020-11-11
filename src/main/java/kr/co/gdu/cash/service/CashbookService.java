@@ -15,7 +15,9 @@ import kr.co.gdu.cash.vo.Cashbook;
 @Transactional
 public class CashbookService {
 	@Autowired private CashbookMapper cashBookMapper;
-	
+	public int getCountCashbook() {
+		return cashBookMapper.selectCashbookCount();
+	}
 	public List<Cashbook> getCashbookListAll(){
 		return cashBookMapper.selectCashbookListAll();
 	}

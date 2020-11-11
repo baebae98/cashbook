@@ -53,6 +53,14 @@
 			
 		</tbody>
 	</table>
-	</div>
+	<ul style="text-align:center;" class="pagination">
+			<c:if test="${currentPage>1}">
+				<li class="page-item"><a class="page-link" href="/admin/cashbookList/${currentPage-1}">이전</a></li>
+			</c:if>
+			<li class="page-item"><a href="#" class="btn  ">${currentPage}</a></li>
+			<c:if test="${currentPage<lastPage}">
+				<li class="page-item"><a class="page-link" href="/admin/cashbookList/${currentPage+1}">다음</a></li>
+			</c:if>
+	</ul>
 </body>
 </html>

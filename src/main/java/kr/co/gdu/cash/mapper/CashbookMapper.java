@@ -26,4 +26,6 @@ public interface CashbookMapper {
 	 Integer selectSumCashbookPriceByInOut(Map<String, Object> map);
 	 List<Map<String,Object>> selectCashListByMonth(Map<String,Object>map);
 	 List<Cashbook> selectCashBookListByDay(Map<String,Object>map);
+	 //count
+	 int selectCashbookCount();
 }
