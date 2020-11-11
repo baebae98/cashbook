@@ -38,6 +38,9 @@
 	 <li class="nav-item active">
 	<a class="nav-link" href="/admin/chart1.jsp">[Chart]</a>
 	</li>
+	 <li class="nav-item active">
+	<a class="nav-link" href="/admin/addMember">[addMember]</a>
+	</li>
 	<li class="nav-item active">
 	<a class="nav-link text-danger" href="/admin/logout">[Log-out]</a>
 	</li>

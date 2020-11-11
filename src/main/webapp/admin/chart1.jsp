@@ -12,13 +12,8 @@
 	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
 	<jsp:include page="/WEB-INF/view/inc/chartMenu.jsp"></jsp:include>
 	<h1>chart1</h1>
-	<!-- chart1 -->
-	<div>
-		<canvas id="char1"></canvas>
-	</div>
-	<!-- table -->
-	<div>
-	</div>
+	
+	
 </body>
 <script type="text/javascript">
 	$.ajax({

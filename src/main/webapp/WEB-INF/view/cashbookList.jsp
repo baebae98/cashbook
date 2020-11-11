@@ -21,8 +21,9 @@
   			<p>cashbookList페이지 입니다.</p>
 		</div>
 	</div>
+	<div class="container">
 	<a href="/admin/cashbookListExcel">전체 cashbook 리스트를 엑셀 파일로 다운!</a>
-	<table border="1">
+	<table class="table table-bordered table-hover">
 		<thead>
 			<tr>
 				<th>cashbook_id</th>
@@ -52,5 +53,6 @@
 			
 		</tbody>
 	</table>
+	</div>
 </body>
 </html>
