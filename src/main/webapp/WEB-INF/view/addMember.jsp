@@ -49,16 +49,21 @@
   			<p>회원가입 페이지 입니다.</p>
 		</div>
 	</div>
-	<form method="post" action="/admin/addMember">
+	<div class="form-group container">
+	<form method="post" action="/admin/addMember" >
 		<div>
-			ID : <input type="text" id="id" name="id">
+			  <label for="uname">ID :</label> 
+			  <input class="form-control" placeholder="Enter ID" type="text" id="id" name="id">
 		</div>
 		<div>
-			PW : <input type="password" id="pw" name="pw">
+			<label for="pwd">PW :</label> 
+			<input class="form-control" placeholder="Enter password" type="password" id="pw" name="pw">
 		</div>
+		<br>
 		<div>
-			<button type="submit" id="addMember">addMember</button>
+			<button class="btn btn-primary" type="submit" id="addMember">addMember</button>
 		</div>
 	</form>
+	</div>
 </body>
 </html>

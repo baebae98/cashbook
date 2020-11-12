@@ -11,8 +11,8 @@
 	<!-- 메뉴바 -->
 	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
 	<jsp:include page="/WEB-INF/view/inc/chartMenu.jsp"></jsp:include>
-	<div class="container">	
-	<h1>chart1</h1>
+<div class="container">	
+	<h1>chart8</h1>
 	</div>
 	
 	
