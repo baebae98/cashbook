@@ -12,5 +12,6 @@
 		<a class="text-white" href="/admin/chart7.jsp">chart7</a>
 		<a class="text-dark" href="/admin/chart8.jsp">chart8</a>
 		<a class="text-bodyy" href="/admin/chart9.jsp">chart9</a>
+		<a class="text-success" href="/admin/chart10.jsp">chart10</a>
 	</div>
 </div>
