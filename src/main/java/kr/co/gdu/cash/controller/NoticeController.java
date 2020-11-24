@@ -3,6 +3,8 @@ package kr.co.gdu.cash.controller;
 import java.util.List;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,10 +15,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.co.gdu.cash.service.NoticeService;
 import kr.co.gdu.cash.vo.Notice;
+import kr.co.gdu.cash.vo.NoticeForm;
+import kr.co.gdu.cash.vo.Noticefile;
 
 
 @Controller
 public class NoticeController {
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());	
 	@Autowired private NoticeService noticeService;
 	// 공지 목록
 		@SuppressWarnings("unchecked")
@@ -39,16 +44,28 @@ public class NoticeController {
 			return "noticeList";
 		}
 	// 공지 입력 폼
-	@GetMapping("/admin/addNotice")
+	/*@GetMapping("/admin/addNotice")
 	public String addNotice(Model model) {
 		List<Notice> noticeList = noticeService.getNoticeList();
 		model.addAttribute("noticeList",noticeList);
 		return "addNotice";
+	}*/
+	@GetMapping("/admin/addNotice")
+	public String addNotice() {
+		return "addNotice";
 	}
+	/*
 	// 공지 입력 액션
 	@PostMapping("/admin/addNotice")
 	public String addNotice(Notice notice) {
 		noticeService.addNotice(notice);
+		return "redirect:/admin/noticeList/1/5";
+	}*/
+	@PostMapping("/admin/addNotice")
+	public String addNotice(NoticeForm noticeForm) {
+		logger.debug(noticeForm.toString());
+		logger.debug("size : " + noticeForm.getNoticefileList().size());
+		noticeService.addNotice(noticeForm);
 		return "redirect:/admin/noticeList/1/5";
 	}
 	// 공지 상세 보기
@@ -66,7 +83,20 @@ public class NoticeController {
 			//@RequestParam(value = "noticeId") int noticeId) {
 			@PathVariable(value = "noticeId") int noticeId) {
 		noticeService.removeNotice(noticeId);
-		return "redirect:/admin/noticeList/1";
+		return "redirect:/admin/noticeList/1/5";
+	}
+	//파일 삭제
+	@GetMapping("removeFile/{noticeId}/{noticefileId}/{noticefileName}")
+	public String removefile(Model model, 
+			@PathVariable(value="noticeId")int noticeId,
+			@PathVariable(value="noticefileId")int noticefileId,
+			@PathVariable(value="noticefileName")String noticefileName) {
+		Noticefile noticefile = new Noticefile();
+		noticefile.setNoticefileId(noticefileId);
+		noticefile.setNoticefileName(noticefileName);
+		
+		noticeService.removeFile(noticefile);
+		return "redirect:/admin/noticeOne/";
 	}
 	// 공지 수정 폼
 	@GetMapping("/admin/modifyNotice/{noticeId}")

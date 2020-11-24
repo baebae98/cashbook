@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,6 +38,16 @@
 			<td>날 짜</td>
 			<td>${notice.noticeDate}</td>
 		</tr>
+			<tr>
+				<c:forEach var="nf" items="${notice.noticefileList}">
+				<td>
+					첨부파일
+				</td>
+				<td>
+					<a href="${pageContext.request.contextPath}/upload/${nf.noticefileName}">${nf.noticefileName}</a>
+				</td>
+				</c:forEach>
+			</tr>
 	</table>
 	<!--<a class="text-dark" href="/admin/modifyNotice?noticeId=${notice.noticeId}">[수정]</a>
 	<a class="text-dark" href="/admin/removeNotice?noticeId=${notice.noticeId}">[삭제]</a>-->

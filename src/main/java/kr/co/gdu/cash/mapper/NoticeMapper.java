@@ -13,7 +13,7 @@ public interface NoticeMapper {
 	int insertNotice(Notice notice);//입력
 	int updateNotice(Notice notice);//수정
 	int deleteNotice(int noticeId);//삭제
-	int selectNoticeCount();
+	int selectNoticeCount();//공지사항 카운트
 	Notice selectNoticeOne(int noticeId);//상세보기
 	List<Notice> selectLastestNoticeList();//목록
 	List<Notice> selectNoticeListByPage(Map<String,Integer>map);
