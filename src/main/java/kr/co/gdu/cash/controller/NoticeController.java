@@ -44,27 +44,27 @@ public class NoticeController {
 			return "noticeList";
 		}
 	// 공지 입력 폼
-	/*@GetMapping("/admin/addNotice")
+	@GetMapping("/admin/addNotice")
 	public String addNotice(Model model) {
 		List<Notice> noticeList = noticeService.getNoticeList();
 		model.addAttribute("noticeList",noticeList);
 		return "addNotice";
-	}*/
-	@GetMapping("/admin/addNotice")
+	}
+	/*@GetMapping("/admin/addNotice")
 	public String addNotice() {
 		return "addNotice";
-	}
-	/*
+	}*/
+	
 	// 공지 입력 액션
-	@PostMapping("/admin/addNotice")
+	/*@PostMapping("/admin/addNotice")
 	public String addNotice(Notice notice) {
 		noticeService.addNotice(notice);
 		return "redirect:/admin/noticeList/1/5";
 	}*/
 	@PostMapping("/admin/addNotice")
 	public String addNotice(NoticeForm noticeForm) {
-		logger.debug(noticeForm.toString());
-		logger.debug("size : " + noticeForm.getNoticefileList().size());
+		//logger.debug(noticeForm.toString());
+		//logger.debug("size : " + noticeForm.getNoticefileList().size());
 		noticeService.addNotice(noticeForm);
 		return "redirect:/admin/noticeList/1/5";
 	}
