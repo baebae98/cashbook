@@ -26,7 +26,7 @@
 		이후
 		</a>
 	</div>
-	<!-- <a href="/admin/addCashbook?currentYear=${currentYear}&currentMonth=${currentMonth}&currentDay=${currentDay}">수입/지출 입력</a>-->
+	<!-- <a href="${pageContext.request.contextPath}/admin/addCashbook?currentYear=${currentYear}&currentMonth=${currentMonth}&currentDay=${currentDay}">수입/지출 입력</a>-->
 	<a href="${pageContext.request.contextPath}/admin/addCashbook/${currentYear}/${currentMonth}/${currentDay}">수입/지출 입력</a>
 	<table class="table table-bordered table-hover">
 		<thead>
@@ -48,8 +48,8 @@
 				<td>${c.categoryName}</td>
 				<td>${c.cashbookPrice}</td>
 				<td>${c.cashbookContent}</td>
-				<!-- <td><a href="/admin/modifyCashbook?cashbookId=${c.cashbookId}">수정</a></td>
-				<td><a href="/admin/removeCashbook?cashbookId=${c.cashbookId}">삭제</a></td>-->
+				<!-- <td><a href="${pageContext.request.contextPath}/admin/modifyCashbook?cashbookId=${c.cashbookId}">수정</a></td>
+				<td><a href="${pageContext.request.contextPath}/admin/removeCashbook?cashbookId=${c.cashbookId}">삭제</a></td>-->
 				<td><a href="${pageContext.request.contextPath}/admin/modifyCashbook/${c.cashbookId}">수정</a></td>
 				<td><a href="${pageContext.request.contextPath}/admin/removeCashbook/${c.cashbookId}">삭제</a></td>
 				</tr>

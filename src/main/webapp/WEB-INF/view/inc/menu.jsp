@@ -18,31 +18,31 @@
 	<a class="nav-link" href="#">[CashBookProject]</a>
 	</li>
 	 <li class="nav-item active">
-	<a class="nav-link" href="/admin/index">[HOME]</a>
+	<a class="nav-link" href="${pageContext.request.contextPath}/admin/index">[HOME]</a>
 	</li>
 	 <li class="nav-item active">
-	<!-- <a class="nav-link" href="/admin/cashbookByMonth">[CashBook]</a>-->
-	<a class="nav-link" href="/admin/cashbookByMonth/-1/-1">[CashBook]</a>
+	<!-- <a class="nav-link" href="${pageContext.request.contextPath}/admin/cashbookByMonth">[CashBook]</a>-->
+	<a class="nav-link" href="${pageContext.request.contextPath}/admin/cashbookByMonth/-1/-1">[CashBook]</a>
 	</li>
 	
 	<li class="nav-item active">
-	<a class="nav-link" href="/admin/cashbookList/1">[CashBookList]</a>
+	<a class="nav-link" href="${pageContext.request.contextPath}/admin/cashbookList/1">[CashBookList]</a>
 	</li>
 	
 	<li class="nav-item active">
-		<a class="nav-link" href="http://localhost/admin/noticeList/1/5">[Notice]</a>
+		<a class="nav-link" href="${pageContext.request.contextPath}/http://localhost/admin/noticeList/1/5">[Notice]</a>
 	</li>
 	<!-- <li class="nav-item active">
-	<a class="nav-link" href="http://localhost:8080/cashStats.html">[cashApi]</a>
+	<a class="nav-link" href="${pageContext.request.contextPath}/http://localhost:8080/cashStats.html">[cashApi]</a>
 	</li>-->
 	 <li class="nav-item active">
-	<a class="nav-link" href="/admin/chart1.jsp">[Chart]</a>
+	<a class="nav-link" href="${pageContext.request.contextPath}/admin/chart1.jsp">[Chart]</a>
 	</li>
 	 <li class="nav-item active">
-	<a class="nav-link" href="/admin/addMember">[addMember]</a>
+	<a class="nav-link" href="${pageContext.request.contextPath}/admin/addMember">[addMember]</a>
 	</li>
 	<li class="nav-item active">
-	<a class="nav-link text-danger" href="/admin/logout">[Log-out]</a>
+	<a class="nav-link text-danger" href="${pageContext.request.contextPath}/admin/logout">[Log-out]</a>
 	</li>
 	</ul>
 	</div>

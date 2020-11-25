@@ -101,13 +101,13 @@
 			</tr>
 	</table>
 	<!-- <ul class="pagination">
-	 <li class="page-item"><a class="page-link" href="/admin/cashbookByMonth?currentYear=${currentYear}&currentMonth=${currentMonth-1 }">[이전달]</a></li>
+	 <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/admin/cashbookByMonth?currentYear=${currentYear}&currentMonth=${currentMonth-1 }">[이전달]</a></li>
 			<span>${currentYear }년${currentMonth}월</span>
-	 <li class="page-item"><a class="page-link" href="/admin/cashbookByMonth?currentYear=${currentYear}&currentMonth=${currentMonth+1 }">[다음달]</a></li>
+	 <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/admin/cashbookByMonth?currentYear=${currentYear}&currentMonth=${currentMonth+1 }">[다음달]</a></li>
 		
-		<li class="page-item"><a href="/admin/cashbookByMonth/${currentYear}/${currentMonth - 1}">[이전달]</a></li>
+		<li class="page-item"><a href="${pageContext.request.contextPath}/admin/cashbookByMonth/${currentYear}/${currentMonth - 1}">[이전달]</a></li>
 							<span>${currentYear }년${currentMonth}월</span>
-		<li class="page-item"><a href="/admin/cashbookByMonth/${currentYear}/${currentMonth + 1}">[다음달]</a></li>
+		<li class="page-item"><a href="${pageContext.request.contextPath}/admin/cashbookByMonth/${currentYear}/${currentMonth + 1}">[다음달]</a></li>
 	</ul>-->
 	<!-- 다이어리
 	 -->
