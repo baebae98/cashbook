@@ -38,7 +38,7 @@
       };
       
       $.ajax({
-         url:'/admin/totalOutByYear',
+         url:'${pageContext.request.contextPath}/admin/totalOutByYear',
          type:'GET',
          success:function(data){
             console.log(data);

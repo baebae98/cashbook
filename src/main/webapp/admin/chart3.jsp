@@ -37,7 +37,7 @@
       };
       
       $.ajax({
-         url:'/admin/totalInByYear',
+         url:'${pageContext.request.contextPath}/admin/totalInByYear',
          type:'GET',
          success:function(data){
             console.log(data);           

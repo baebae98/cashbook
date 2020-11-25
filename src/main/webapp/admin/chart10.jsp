@@ -41,7 +41,7 @@ $(document).ready(function(pointStyle){
     };
     
     $.ajax({
-       url:'/admin/minOutMonthByYear',
+       url:'${pageContext.request.contextPath}/admin/minOutMonthByYear',
        type:'get',
        success:function(data){
           console.log(data);

@@ -17,7 +17,7 @@
 		<div class="container">
 		 <ul class="navbar-nav">
 		 	<li class="nav-item active">
-      			<a class="nav-link" href="#">[CashBookProject]</a>
+      			<a class="nav-link" href="${pageContext.request.contextPath}/admin/index">[CashBookProject]</a>
    			</li>
 		 </ul>
 		 </div>
@@ -51,7 +51,7 @@
 		</table>
 	</div>
 	<h1>로그인</h1>
-	<form action="/login" method="post"  class="was-validated">
+	<form action="${pageContext.request.contextPath}/login" method="post"  class="was-validated">
 		<div class="form-group">
     <label for="uname">ID :</label>
     <input type="text" class="form-control" id="uname" placeholder="Enter username" name="id" required>

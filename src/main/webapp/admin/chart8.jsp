@@ -43,7 +43,7 @@ $(document).ready(function(){
     };
     
     $.ajax({
-       url:'/admin/minMonthByYear',
+       url:'${pageContext.request.contextPath}/admin/minMonthByYear',
        type:'GET',
        success:function(data){
           console.log(data);

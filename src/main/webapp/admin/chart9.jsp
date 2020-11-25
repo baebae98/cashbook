@@ -34,7 +34,7 @@ $(document).ready(function(){
     };
     
     $.ajax({
-       url:'/admin/maxOutMonthByYear',
+       url:'${pageContext.request.contextPath}/admin/maxOutMonthByYear',
        type:'get',
        success:function(data){
           console.log(data);

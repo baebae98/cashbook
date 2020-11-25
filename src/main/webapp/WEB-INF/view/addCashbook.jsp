@@ -16,7 +16,7 @@
 	</div>
 	<div class="container">
 	<h1>addCashbook</h1>
-	<form method="post" action="/admin/addCashbook">
+	<form method="post" action="${pageContext.request.contextPath}/admin/addCashbook">
 		<table class="table table-bordered table-hover">
 			<tr>
 				<td>cashbook_date</td>

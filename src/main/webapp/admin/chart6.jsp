@@ -33,7 +33,7 @@
 <script>
 $('#totalMonthlyOutByYearChart').click(function(data){
 $.ajax({
-    url: '/admin/totalAverageInAndOutByYear/'+$('#year').val(),
+    url: '${pageContext.request.contextPath}/admin/totalAverageInAndOutByYear/'+$('#year').val(),
     type: 'get',
     success: function(data) {
        console.log(data[0].수입); 

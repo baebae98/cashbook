@@ -26,7 +26,7 @@ import kr.co.gdu.cash.vo.Noticefile;
 public class NoticeService {
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	//파일지정경로
-	private final String PATH = "D:\\javawork\\spring-work\\cashbook\\src\\main\\webapp\\upload\\";
+	private final String PATH = "D:\\javawork\\spring-work\\gitspringowrk\\cash\\cash\\src\\main\\webapp\\upload\\";
 	
 	@Autowired private NoticeMapper noticeMapper;
 	@Autowired private CashbookMapper  cashbookMapper;

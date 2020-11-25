@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>메뉴바</title>
+<meta charset="UTF-8">
+<title>硫붾돱諛�</title>
 <!-- w3schools.com bootstrap -->
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -15,13 +15,12 @@
 	<div class="container">
 		<ul class="navbar-nav ">
 	 <li class="nav-item active">
-	<a class="nav-link" href="#">[CashBookProject]</a>
+	<a class="nav-link" href="${pageContext.request.contextPath}/admin/index">[CashBookProject]</a>
 	</li>
 	 <li class="nav-item active">
 	<a class="nav-link" href="${pageContext.request.contextPath}/admin/index">[HOME]</a>
 	</li>
 	 <li class="nav-item active">
-	<!-- <a class="nav-link" href="${pageContext.request.contextPath}/admin/cashbookByMonth">[CashBook]</a>-->
 	<a class="nav-link" href="${pageContext.request.contextPath}/admin/cashbookByMonth/-1/-1">[CashBook]</a>
 	</li>
 	
@@ -30,11 +29,8 @@
 	</li>
 	
 	<li class="nav-item active">
-		<a class="nav-link" href="${pageContext.request.contextPath}/http://localhost/admin/noticeList/1/5">[Notice]</a>
+		<a class="nav-link" href="${pageContext.request.contextPath}/admin/noticeList/1/5">[Notice]</a>
 	</li>
-	<!-- <li class="nav-item active">
-	<a class="nav-link" href="${pageContext.request.contextPath}/http://localhost:8080/cashStats.html">[cashApi]</a>
-	</li>-->
 	 <li class="nav-item active">
 	<a class="nav-link" href="${pageContext.request.contextPath}/admin/chart1.jsp">[Chart]</a>
 	</li>

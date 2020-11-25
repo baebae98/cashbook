@@ -31,7 +31,7 @@
 <script>
 $('#totalMonthlyInByYearChart').click(function(data){
 	$.ajax({
-		url:'/admin/totalMonthlyInByYear/'+$('#year').val(),
+		url:'${pageContext.request.contextPath}/admin/totalMonthlyInByYear/'+$('#year').val(),
 		type:'get',
 		success: function(data) {	
 			var ctx = document.getElementById('myChart').getContext('2d');

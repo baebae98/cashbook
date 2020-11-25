@@ -38,7 +38,7 @@ $(document).ready(function(){
     };
     
     $.ajax({
-       url:'/admin/maxMonthByYear',
+       url:'${pageContext.request.contextPath}/admin/maxMonthByYear',
        type:'GET',
        success:function(data){
           console.log(data);
