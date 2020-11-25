@@ -28,6 +28,9 @@ public class NoticeService {
 	//파일지정경로
 	private final String PATH = "D:\\javawork\\spring-work\\gitspringowrk\\cash\\cash\\src\\main\\webapp\\upload\\";
 	
+	//aws 업로드시 사용하는 경로
+	//private final String PATH = "/var/lib/tomcat9/webapps/cash/upload/";
+	
 	@Autowired private NoticeMapper noticeMapper;
 	@Autowired private CashbookMapper  cashbookMapper;
 	@Autowired private NoticefileMapper noticefileMapper;

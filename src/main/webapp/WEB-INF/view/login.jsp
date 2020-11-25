@@ -55,13 +55,13 @@
 		<div class="form-group">
     <label for="uname">ID :</label>
     <input type="text" class="form-control" id="uname" placeholder="Enter username" name="id" required>
-    	<div class="valid-feedback">Greate!</div>
+    	<div class="valid-feedback">Great!</div>
    	 <div class="invalid-feedback">Please enter your ID.</div>
   </div>
   <div class="form-group">
     <label for="pwd">Password:</label>
     <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pw" required>
-    	<div class="valid-feedback">Greate!</div>
+    	<div class="valid-feedback">Great!</div>
     	<div class="invalid-feedback">Please enter your password.</div>
   </div>
 		<div>
