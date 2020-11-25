@@ -82,7 +82,7 @@
 		</collection>
 		<collection property="commentList" ofType="kr.co.gdu.cash.vo.Comment">
 			<result property="commentId" column="comment_id"/>
-			<result property="boardId" column="board_id"/>
+			<result property="noticeId" column="notice_id"/>
 			<result property="commentContent" column="comment_content"/>
 			<result property="commentDate" column="comment_date"/>
 		</collection>
