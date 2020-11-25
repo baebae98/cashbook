@@ -48,7 +48,7 @@ input {
 		</div>
 	</div>
 	<div class="container">
-	<form id="fileuploadFrom" method="post" enctype="multipart/form-data" action="/admin/addNotice">
+	<form id="fileuploadFrom" method="post" enctype="multipart/form-data" action="${pageContext.request.contextPath}/admin/addNotice">
 		<table class="table table-bordered table-hover">
 			<tr>
 				<td>제목</td>

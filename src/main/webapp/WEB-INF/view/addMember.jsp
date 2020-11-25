@@ -50,7 +50,7 @@
 		</div>
 	</div>
 	<div class="form-group container">
-	<form method="post" action="/admin/addMember" >
+	<form method="post" action="${pageContext.request.contextPath}/admin/addMember" >
 		<div>
 			  <label for="uname">ID :</label> 
 			  <input class="form-control" placeholder="Enter ID" type="text" id="id" name="id">

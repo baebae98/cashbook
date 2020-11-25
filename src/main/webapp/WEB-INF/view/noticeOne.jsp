@@ -51,8 +51,8 @@
 	</table>
 	<!--<a class="text-dark" href="/admin/modifyNotice?noticeId=${notice.noticeId}">[수정]</a>
 	<a class="text-dark" href="/admin/removeNotice?noticeId=${notice.noticeId}">[삭제]</a>-->
-	<a class="text-adrk" href="/admin/modifyNotice/${notice.noticeId}">[수정]</a>
-	<a class="text-adrk" href="/admin/removeNotice/${notice.noticeId}">[삭제]</a>
+	<a class="text-adrk" href="${pageContext.request.contextPath}/admin/modifyNotice/${notice.noticeId}">[수정]</a>
+	<a class="text-adrk" href="${pageContext.request.contextPath}/admin/removeNotice/${notice.noticeId}">[삭제]</a>
 
 	<br><br>
 	<h3>댓글목록</h3>

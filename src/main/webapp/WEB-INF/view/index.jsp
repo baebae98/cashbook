@@ -30,7 +30,7 @@
 	</div>
 	<div class="container">
 	<!-- 공지 -->
-	<div>공지사항<a style="float:right;" class="text-dark btn btn-link" href="/admin/noticeList/1/5">more</a></div>
+	<div>공지사항<a style="float:right;" class="text-dark btn btn-link" href="${pageContext.request.contextPath}/admin/noticeList/1/5">more</a></div>
 	<div>
 		<table class="table table-hover">
 		<thead>
@@ -50,7 +50,7 @@
 		</table>
 	</div>
 	<!-- 수입/지출 -->
-	<div>수입/지출 통계<a style="float:right;" class="text-dark btn btn-link" href="/admin/cashbookByMonth/-1/-1">more</a></div>
+	<div>수입/지출 통계<a style="float:right;" class="text-dark btn btn-link" href="${pageContext.request.contextPath}/admin/cashbookByMonth/-1/-1">more</a></div>
 	<div>
 			<table class="table table-hover">
 		<thead>

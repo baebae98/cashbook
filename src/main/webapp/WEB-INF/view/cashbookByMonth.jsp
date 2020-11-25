@@ -81,14 +81,14 @@
 			
 			<td width="15%" style="text-align: right;">
 				
-				<a class="btn btn-dark" href="/admin/cashbookByMonth/${currentYear}/${currentMonth - 1}">←</a>
+				<a class="btn btn-dark" href="${pageContext.request.contextPath}/admin/cashbookByMonth/${currentYear}/${currentMonth - 1}">←</a>
 				
 			</td>
 			<td width="30%">
 				<h3>${currentYear}년 ${currentMonth}월</h3>
 			</td>
 			<td width="15%" style="text-align: left;">
-				<a class="btn btn-dark" href="/admin/cashbookByMonth/${currentYear}/${currentMonth + 1}">→</a>
+				<a class="btn btn-dark" href="${pageContext.request.contextPath}/admin/cashbookByMonth/${currentYear}/${currentMonth + 1}">→</a>
 			</td>
 			<td width="20%">
 				<div class="card">
@@ -141,7 +141,7 @@
 								<c:if test="${i % 7 == 1}">
 									<div class="sunday">
 										<!--<a href="/admin/cashbookByDay?currentYear=${currentYear}&currentMonth=${currentMonth}&currentDay=${i-(firstDayOfWeek-1)}">${i - (firstDayOfWeek - 1)}  -->
-										<a href="/admin/cashbookByDay/sunday/${currentYear}/${currentMonth}/${i-(firstDayOfWeek-1)}">${i-(firstDayOfWeek-1)}</a>
+										<a href="${pageContext.request.contextPath}/admin/cashbookByDay/sunday/${currentYear}/${currentMonth}/${i-(firstDayOfWeek-1)}">${i-(firstDayOfWeek-1)}</a>
 									</div>
 								</c:if>
 								
@@ -149,7 +149,7 @@
 								<c:if test="${i % 7 == 0}">
 									<div class="saturday">
 										<!--<a href="/admin/cashbookByDay?currentYear=${currentYear}&currentMonth=${currentMonth}&currentDay=${i - (firstDayOfWeek - 1)}">${i - (firstDayOfWeek - 1)}</a>  -->
-										<a href="/admin/cashbookByDay/saturday/${currentYear}/${currentMonth}/${i - (firstDayOfWeek - 1)}">${i - (firstDayOfWeek - 1)}</a>
+										<a href="${pageContext.request.contextPath}/admin/cashbookByDay/saturday/${currentYear}/${currentMonth}/${i - (firstDayOfWeek - 1)}">${i - (firstDayOfWeek - 1)}</a>
 									</div>
 								</c:if>
 								
@@ -157,7 +157,7 @@
 								<c:if test="${i % 7 != 1 && i % 7 != 0}">
 									<div class="weekday">
 										<!-- <a href="/admin/cashbookByDay?currentYear=${currentYear}&currentMonth=${currentMonth}&currentDay=${i - (firstDayOfWeek - 1)}">${i - (firstDayOfWeek - 1)}</a> -->
-										<a href="/admin/cashbookByDay/weekday/${currentYear}/${currentMonth}/${i - (firstDayOfWeek - 1)}">${i - (firstDayOfWeek - 1)}</a>
+										<a href="${pageContext.request.contextPath}/admin/cashbookByDay/weekday/${currentYear}/${currentMonth}/${i - (firstDayOfWeek - 1)}">${i - (firstDayOfWeek - 1)}</a>
 									</div>
 								</c:if>
 							<!-- 지출/수입 목록이 있는 날씨를 cashList에서 검색 -->

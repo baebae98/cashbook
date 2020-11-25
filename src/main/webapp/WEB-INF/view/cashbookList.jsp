@@ -22,7 +22,7 @@
 		</div>
 	</div>
 	<div class="container">
-	<a href="/admin/cashbookListExcel">전체 cashbook 리스트를 엑셀 파일로 다운!</a>
+	<a href="${pageContext.request.contextPath}/admin/cashbookListExcel">전체 cashbook 리스트를 엑셀 파일로 다운!</a>
 	<table class="table table-bordered table-hover">
 		<thead>
 			<tr>
@@ -55,12 +55,13 @@
 	</table>
 	<ul style="text-align:center;" class="pagination">
 			<c:if test="${currentPage>1}">
-				<li class="page-item"><a class="page-link" href="/admin/cashbookList/${currentPage-1}">이전</a></li>
+				<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/admin/cashbookList/${currentPage-1}">이전</a></li>
 			</c:if>
 			<li class="page-item"><a href="#" class="btn  ">${currentPage}</a></li>
 			<c:if test="${currentPage<lastPage}">
-				<li class="page-item"><a class="page-link" href="/admin/cashbookList/${currentPage+1}">다음</a></li>
+				<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/admin/cashbookList/${currentPage+1}">다음</a></li>
 			</c:if>
 	</ul>
+	</div>
 </body>
 </html>

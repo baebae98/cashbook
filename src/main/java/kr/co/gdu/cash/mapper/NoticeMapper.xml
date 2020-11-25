@@ -41,6 +41,7 @@
 		notice_content noticeContent
 		FROM notice
 		ORDER BY notice_id DESC
+		LIMIT 0,5
 	</select>
 	<!-- 공지사항 상세보기 -->
 	<select id="selectNoticeOne" parameterType="int" resultMap="selectNoticeOneResult">
