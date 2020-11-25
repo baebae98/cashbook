@@ -10,5 +10,6 @@ import kr.co.gdu.cash.vo.Noticefile;
 public interface NoticefileMapper {
 	int insertNoticefile(Noticefile noticefile);
 	int deleteNoticefile(int NoticefileId);
+	int deleteNoticefileOne(int noticeId);
 	List<String> selectNoticeFileNameList(int noticeId);
 }

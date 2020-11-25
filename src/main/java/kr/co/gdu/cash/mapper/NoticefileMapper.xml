@@ -21,7 +21,10 @@
 	DELETE FROM noticefile
 	WHERE notice_id = #{noticeId}
 </delete>
-
+<delete id="deleteNoticefileOne" parameterType="Integer">
+	DELETE FROM noticefile
+	WHERE noticefile_id = #{noticefile_id}
+</delete>
 <select id="selectNoticeFileNameList" parameterType="int" resultType="String">
 	SELECT noticefile_name
 	FROM noticefile

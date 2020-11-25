@@ -17,16 +17,6 @@
 		FROM notice
 		WHERE notice_id = #{noticeId}
 	</delete>
-	<!-- 공지사항 상세보기 -->
-	<select id="selectNoticeOne" parameterType="int" resultType="kr.co.gdu.cash.vo.Notice">
-		SELECT
-			notice_id noticeId,
-			notice_title noticeTitle,
-			notice_content noticeContent,
-			notice_date noticeDate
-		FROM notice
-		WHERE notice_id = #{noticeId}
-	</select>
 	<!-- 공지사항 입력(추가) -->
 	<insert id="insertNotice" parameterType="kr.co.gdu.cash.vo.Notice">
 		<selectKey resultType="int" keyProperty="noticeId" order="AFTER">
@@ -43,26 +33,41 @@
 		)
 	</insert>
 	
-	<!-- 공지사항 목록 -->
-	<select id="selectLastestNoticeList" parameterType="int" resultMap="selectNoticeListByPageResult">
+	<!--index페이지에서 공지사항 목록 -->
+	<select id="selectLastestNoticeList" parameterType="int" resultType="kr.co.gdu.cash.vo.Notice">
 		SELECT
-		n.notice_id,
-		n.notice_title,
-		n.notice_content,
-		n.notice_date,
-		nf.noticefile_id,
-		nf.notice_id,
-		nf.noticefile_name,
-		nf.noticefile_type,
-		nf.noticefile_size
-		FROM notice n LEFT OUTER JOIN noticefile nf
-		ON n.notice_id = nf.noticefile_id
-		ORDER BY n.notice_id DESC
-		LIMIT 0, 5
+		notice_id noticeId,
+		notice_title noticeTitle,
+		notice_content noticeContent
+		FROM notice
+		ORDER BY notice_id DESC
+	</select>
+	<!-- 공지사항 상세보기 -->
+	<select id="selectNoticeOne" parameterType="int" resultMap="selectNoticeOneResult">
+		 SELECT
+         n.notice_id ,
+         n.notice_title ,
+         n.notice_content ,
+         n.notice_date,
+         nf.noticefile_id,
+         nf.notice_id,
+         nf.noticefile_name,
+         nf.noticefile_type,
+         nf.noticefile_size,
+         c.comment_id,
+         c.notice_id,
+         c.comment_content,
+         c.comment_date
+      FROM notice n
+      LEFT JOIN noticefile nf
+         ON n.notice_id = nf.notice_id 
+      LEFT JOIN comment c
+         on n.notice_id = c.notice_id
+      WHERE n.notice_id = #{noticeId}
 	</select>
 	
 	<!-- 공지사항 목록 페이징 -->
-	<resultMap type="kr.co.gdu.cash.vo.Notice" id="selectNoticeListByPageResult">
+	<resultMap type="kr.co.gdu.cash.vo.Notice" id="selectNoticeOneResult">
 		<result property="noticeId" column="notice_id"/>
 		<result property="noticeTitle" column="notice_title"/>
 		<result property="noticeContent" column="notice_content"/>
@@ -74,21 +79,21 @@
 			<result property="noticefileType" column="noticefile_type"/>
 			<result property="noticefileSize" column="noticefile_size"/>
 		</collection>
+		<collection property="commentList" ofType="kr.co.gdu.cash.vo.Comment">
+			<result property="commentId" column="comment_id"/>
+			<result property="boardId" column="board_id"/>
+			<result property="commentContent" column="comment_content"/>
+			<result property="commentDate" column="comment_date"/>
+		</collection>
 	</resultMap>
-	<select id="selectNoticeListByPage" parameterType="java.util.Map" resultMap="selectNoticeListByPageResult">
+	<select id="selectNoticeListByPage" parameterType="java.util.Map" resultType="kr.co.gdu.cash.vo.Notice">
 		SELECT
-		n.notice_id,
-		n.notice_title,
-		n.notice_content,
-		n.notice_date,
-		nf.noticefile_id,
-		nf.notice_id,
-		nf.noticefile_name,
-		nf.noticefile_type,
-		nf.noticefile_size
-		FROM notice n LEFT OUTER JOIN noticefile nf
-		ON n.notice_id = nf.noticefile_id
-		ORDER BY n.notice_id DESC
+		notice_id noticeId,
+		notice_title noticeTitle,
+		notice_content noticeContent,
+		notice_date noticeDate
+		FROM notice
+		ORDER BY notice_id DESC
 		LIMIT #{beginRow}, #{rowPerPage}
 	</select>
 	<!-- 카운트? -->

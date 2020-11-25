@@ -86,7 +86,7 @@ public class NoticeController {
 		return "redirect:/admin/noticeList/1/5";
 	}
 	//파일 삭제
-	@GetMapping("removeFile/{noticeId}/{noticefileId}/{noticefileName}")
+	@GetMapping("/removeFile/{noticeId}/{noticefileId}/{noticefileName}")
 	public String removefile(Model model, 
 			@PathVariable(value="noticeId")int noticeId,
 			@PathVariable(value="noticefileId")int noticefileId,
@@ -95,8 +95,10 @@ public class NoticeController {
 		noticefile.setNoticefileId(noticefileId);
 		noticefile.setNoticefileName(noticefileName);
 		
+		System.out.println("Debug: boardfile[" + noticefile +"] 삭제");
+		
 		noticeService.removeFile(noticefile);
-		return "redirect:/admin/noticeOne/";
+		return "redirect:/admin/modifyNotice/"+noticeId;
 	}
 	// 공지 수정 폼
 	@GetMapping("/admin/modifyNotice/{noticeId}")
@@ -108,9 +110,14 @@ public class NoticeController {
 		return "modifyNotice";
 	}
 	// 공지 수정 액션
-	@PostMapping("/admin/modifyNotice")
+	/*@PostMapping("/admin/modifyNotice")
 	public String modifyNotice(Notice notice) {
 		noticeService.modifyNotice(notice);
 		return "redirect:/admin/noticeOne/"+notice.getNoticeId();
+	}*/
+	@PostMapping("/admin/modifyNotice")
+	public String modifyNotice(NoticeForm noticeForm) {
+		noticeService.updateNotice(noticeForm);
+		return "redirect:/admin/noticeOne/"+noticeForm.getNoticeId();
 	}
 }

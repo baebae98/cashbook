@@ -53,5 +53,23 @@
 	<a class="text-dark" href="/admin/removeNotice?noticeId=${notice.noticeId}">[삭제]</a>-->
 	<a class="text-adrk" href="/admin/modifyNotice/${notice.noticeId}">[수정]</a>
 	<a class="text-adrk" href="/admin/removeNotice/${notice.noticeId}">[삭제]</a>
-	</div>
+
+	<br><br>
+	<h3>댓글목록</h3>
+	<table border="1">
+		<c:forEach var="c" items="${notice.commentList}">
+			<tr>
+				<td>${c.commentContent}</td>
+				<td>
+					<a href="${pageContext.request.contextPath}/removeComment/${c.commentId}/${notice.noticeId}">삭제</a>
+				</td>
+			</tr>
+		</c:forEach>
+	</table>
+	<form action="${pageContext.request.contextPath}/addComment" method="post">
+		<input type="hidden" name="noticeId" value="${notice.noticeId}">
+		<textarea name="commentContent" rows="3" cols="50"></textarea>
+		<button type="submit">댓글입력</button>
+	</form>
+</div>
 </body>

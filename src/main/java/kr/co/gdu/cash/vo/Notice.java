@@ -11,4 +11,5 @@ public class Notice {
 	private String noticeContent;
 	private String noticeDate;
 	private List<Noticefile> noticefileList;
+	private List<Comment> commentList;
 }
