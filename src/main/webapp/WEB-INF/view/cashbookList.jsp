@@ -23,7 +23,7 @@
 	</div>
 	<div class="container">
 	<a href="${pageContext.request.contextPath}/admin/cashbookListExcel">전체 cashbook 리스트를 엑셀 파일로 다운!</a>
-	<table class="table table-bordered table-hover">
+	<table class="table table-bordered table-hover table-sm">
 		<thead>
 			<tr>
 				<th>cashbook_id</th>
@@ -53,15 +53,36 @@
 			
 		</tbody>
 	</table>
-	<ul style="text-align:center;" class="pagination">
-			<c:if test="${currentPage>1}">
-				<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/admin/cashbookList/${currentPage-1}">이전</a></li>
-			</c:if>
-			<li class="page-item"><a href="#" class="btn  ">${currentPage}</a></li>
-			<c:if test="${currentPage<lastPage}">
-				<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/admin/cashbookList/${currentPage+1}">다음</a></li>
-			</c:if>
-	</ul>
+	<div style="margin-left:35%">
+		<ul class="pagination">
+			<!--  현재 페이지가 1보다 클시 -->
+			<!--  현재 페이지가 1일 시 -->
+			<c:choose>
+				<c:when test="${currentPage > '1'}">
+					<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/admin/cashbookList/1">처음</a></li>
+					<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/admin/cashbookList/${currentPage-1}">이전</a></li>
+				</c:when>
+				<c:otherwise>
+					<li class="page-item disabled"><a class="page-link">처음</a></li>		
+					<li class="page-item disabled"><a class="page-link">이전</a></li>		
+				</c:otherwise>
+			</c:choose>
+			<!-- 현재 페이지 표시 -->
+			<li class="page-item"><a class="page-link">${currentPage}</a></li>
+			<!--  현재 페이지가 마지막 페이지 보다 작을 시 -->
+			<!--  현재 페이지가 마지막 페이지 일 시 -->
+			<c:choose>
+				<c:when test="${currentPage < lastPage}">
+					<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/admin/cashbookList/${currentPage+1}">다음</a></li>
+					<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/admin/cashbookList/${lastPage}">맨끝</a></li>
+				</c:when>
+				<c:otherwise>		
+					<li class="page-item disabled"><a class="page-link">다음</a></li>		
+					<li class="page-item disabled"><a class="page-link">맨끝</a></li>		
+				</c:otherwise>
+			</c:choose>
+		</ul>
+	</div>
 	</div>
 </body>
 </html>

@@ -45,23 +45,35 @@
 			</c:forEach>
 		</tbody>
 	</table>
-	
+	<div style="margin-left:35%">
 		<ul class="pagination">
-		<c:if test="${currentPage == 1 }">
-		<!-- <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/admin/noticeList?currentPage=${currentPage+1}">다음</a></li>-->
-			<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/admin/noticeList/${currentPage+1}/${rowPerPage}">다음</a></li>
-	</c:if>
-	<c:if test="${currentPage == lastPage }">
-		<!-- <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/admin/noticeList?currentPage=${currentPage-1}">이전</a></li>-->
-		<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/admin/noticeList/${currentPage-1}/${rowPerPage}">이전</a></li>
-	</c:if>
-	<c:if test="${currentPage > 1 && currentPage < lastPage}">
-		<!--<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/admin/noticeList?currentPage=${currentPage-1}">이전</a></li>
-		<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/admin/noticeList?currentPage=${currentPage+1}">다음</a></li>-->
-		<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/admin/noticeList/${currentPage-1}/${rowPerPage}">이전</a></li>
-		<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/admin/noticeList/${currentPage+1}/${rowPerPage}">다음</a></li>
-	</c:if>
-	</ul>
+			<!--  현재 페이지가 1보다 클시 -->
+			<!--  현재 페이지가 1일 시 -->
+			<c:choose>
+				<c:when test="${currentPage > '1'}">
+					<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/admin/noticeList/1/5">처음</a></li>
+					<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/admin/noticeList/${currentPage-1}/5">이전</a></li>
+				</c:when>
+				<c:otherwise>
+					<li class="page-item disabled"><a class="page-link">처음</a></li>		
+					<li class="page-item disabled"><a class="page-link">이전</a></li>		
+				</c:otherwise>
+			</c:choose>
+			<!-- 현재 페이지 표시 -->
+			<li class="page-item"><a class="page-link">${currentPage}</a></li>
+			<!--  현재 페이지가 마지막 페이지 보다 작을 시 -->
+			<!--  현재 페이지가 마지막 페이지 일 시 -->
+			<c:choose>
+				<c:when test="${currentPage < lastPage}">
+					<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/admin/noticeList/${currentPage+1}/5">다음</a></li>
+					<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/admin/noticeList/${lastPage}/5">맨끝</a></li>
+				</c:when>
+				<c:otherwise>		
+					<li class="page-item disabled"><a class="page-link">다음</a></li>		
+					<li class="page-item disabled"><a class="page-link">맨끝</a></li>		
+				</c:otherwise>
+			</c:choose>
+		</ul>
 	</div>
 </body>
 </html>

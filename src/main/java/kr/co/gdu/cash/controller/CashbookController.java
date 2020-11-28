@@ -32,13 +32,13 @@ public class CashbookController {
 	@GetMapping("/admin/cashbookList/{currentPage}")
 	public String cashbookList(Model model,
 			@PathVariable(name = "currentPage", required = true)int currentPage) {
-		int rowPerPage = 20;
+		int rowPerPage = 15;
 		
 		List<Cashbook> cashbookList = cashbookService.getCashbookListByPage(currentPage, rowPerPage);
 		int totalCount = cashbookService.getCountCashbook(); //전체 데이터
 		int lastPage = totalCount / rowPerPage; //마지막 페이지
 		
-		if(totalCount % rowPerPage != 0) { //20 미만의 개수의 데이터가 있는 페이지표시
+		if(totalCount % rowPerPage != 0) { //15 미만의 개수의 데이터가 있는 페이지표시
 			lastPage +=1;
 		}
 		if(lastPage == 0) {//전체 페이지가 0개이면 현재 페이지도 0으로 표시함.

@@ -21,7 +21,7 @@ public class GuestbookController {
 	@GetMapping("/admin/guestbookList/{currentPage}")
 	public String guestbookList(Model model,
 			@PathVariable(value = "currentPage",required = true) int currentPage) {
-		int rowPerPage = 10;
+		int rowPerPage = 5;
 		
 		
 		List<Guestbook> guestbookList = guestbookService.getGuestbookListPage(currentPage, rowPerPage);

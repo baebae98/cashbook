@@ -59,6 +59,36 @@
 				</tbody>
 			</c:forEach>
 	</table>
+	<div style="margin-left:35%">
+		<ul class="pagination">
+			<!--  현재 페이지가 1보다 클시 -->
+			<!--  현재 페이지가 1일 시 -->
+			<c:choose>
+				<c:when test="${currentPage > '1'}">
+					<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/admin/guestbookList/1">처음</a></li>
+					<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/admin/guestbookList/${currentPage-1}">이전</a></li>
+				</c:when>
+				<c:otherwise>
+					<li class="page-item disabled"><a class="page-link">처음</a></li>		
+					<li class="page-item disabled"><a class="page-link">이전</a></li>		
+				</c:otherwise>
+			</c:choose>
+			<!-- 현재 페이지 표시 -->
+			<li class="page-item"><a class="page-link">${currentPage}</a></li>
+			<!--  현재 페이지가 마지막 페이지 보다 작을 시 -->
+			<!--  현재 페이지가 마지막 페이지 일 시 -->
+			<c:choose>
+				<c:when test="${currentPage < lastPage}">
+					<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/admin/guestbookList/${currentPage+1}">다음</a></li>
+					<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/admin/guestbookList/${lastPage}">맨끝</a></li>
+				</c:when>
+				<c:otherwise>		
+					<li class="page-item disabled"><a class="page-link">다음</a></li>		
+					<li class="page-item disabled"><a class="page-link">맨끝</a></li>		
+				</c:otherwise>
+			</c:choose>
+		</ul>
+	</div>
 	<!-- 방명록 작성 -->
 		<form id="addGuestbookForm" action="${pageContext.request.contextPath}/admin/addGuestbook" method="post">
 			<table class="table table-borderless" style="border:1px solid #EAEAEA;">
@@ -77,6 +107,7 @@
 				</tr>
 			</table>
 		</form>
+	
 	</div>
 </body>
 </html>
