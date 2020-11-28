@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import kr.co.gdu.cash.service.GuestbookService;
 import kr.co.gdu.cash.vo.Guestbook;
@@ -74,10 +75,10 @@ public class GuestbookController {
 	public String modifyGuestbook(Model model, 
 			@PathVariable(value = "guestbookId") int guestbookId) {
 	
-		//Guestbook guestbook = guestbookService.getGuestbookOne(guestbookId);
+		Guestbook guestbook = guestbookService.getGuestbookOne(guestbookId);
 		System.out.println("Debug: " + guestbookId);
 		
-		//model.addAttribute("guestbook", guestbook);
+		model.addAttribute("guestbook", guestbook);
 		
 		return "modifyGuestbook";
 	}
