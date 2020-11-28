@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.gdu.cash.mapper.GuestbookMapper">
+	 <select id="selectGuestbookListByPage" parameterType="java.util.Map" resultType="kr.co.gdu.cash.vo.Guestbook">
+  	SELECT
+    	guestbook_id as guestbookId,
+    	guestbook_title as guestbookTitle,
+    	guestbook_content as guestbookContent, 
+    	guestbook_writer as guestbookWriter, 
+    	guestbook_date as guestbookDate
+    FROM guestbook
+    ORDER BY guestbook_id DESC
+    LIMIT #{beginRow}, #{rowPerPage}
+  </select>
+  
+  <select id="countGuestbook" resultType="Integer">
+  	SELECT COUNT(*) FROM guestbook
+  </select>
+  
+  <select id="selectGuestbookOne" parameterType="Integer" resultType="kr.co.gdu.cash.vo.Guestbook">
+	SELECT
+    	guestbook_id as guestbookId,
+    	guestbook_title as guestbookTitle,
+    	guestbook_content as guestbookContent, 
+    	guestbook_writer as guestbookWriter, 
+    	guestbook_date as guestbookDate
+    FROM guestbook
+    WHERE guestbook_id = #{guestbookId}
+  </select>
+  
+  <insert id="insertGuestbook" parameterType="kr.co.gdu.cash.vo.Guestbook">
+	INSERT INTO guestbook (
+		guestbook_title, 
+		guestbook_content, 
+		guestbook_writer, 
+		guestbook_date
+	) VALUES (
+		#{guestbookTitle}, 
+		#{guestbookContent}, 
+		#{guestbookWriter}, 
+		NOW()
+	)
+  </insert>
+  
+  <update id="updateGuestbook" parameterType="kr.co.gdu.cash.vo.Guestbook">
+  	UPDATE guestbook
+  	SET
+		guestbook_title = #{guestbookTitle}, 
+		guestbook_content = #{guestbookContent}, 
+		guestbook_date = NOW()
+	WHERE guestbook_id = #{guestbookId}
+  </update>
+  
+  <delete id="deleteGuestbook" parameterType="Integer">
+  	DELETE FROM guestbook
+  	WHERE guestbook_id = #{guestbookId}
+  </delete>
+</mapper>

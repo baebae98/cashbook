@@ -12,6 +12,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
+	 <!-- 상단 메뉴 바 -->
 	<jsp:include page="/WEB-INF/view/inc/menu.jsp"></jsp:include>
 	<!-- 상단 바 밑에 있는 점보 -->
 	<div class="jumbotron jumbotron-fluid bg-warning">

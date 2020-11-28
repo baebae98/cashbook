@@ -37,6 +37,9 @@
 	 <li class="nav-item active">
 	<a class="nav-link" href="${pageContext.request.contextPath}/admin/addMember">[addMember]</a>
 	</li>
+		<li class="nav-item active">
+	<a class="nav-link" href="${pageContext.request.contextPath}/admin/guestbookList/1">[GuestBook]</a>
+	</li>
 	<li class="nav-item active">
 	<a class="nav-link text-danger" href="${pageContext.request.contextPath}/admin/logout">[Log-out]</a>
 	</li>
