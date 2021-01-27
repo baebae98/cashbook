@@ -19,7 +19,7 @@
 	<table class="table table-bordered table-hover">
 		<tr>
 			<td>cashbook_id</td>
-			<td><input type="text" name="cashbookId" id="cashbookId" value="${cashbook.cashbookId}" readonly="readonly"></td>
+			<td><input class="form-control" type="text" name="cashbookId" id="cashbookId" value="${cashbook.cashbookId}" readonly="readonly"></td>
 		</tr>
 		<tr>
 			<td>cashbook_kind</td>
@@ -31,7 +31,7 @@
 		<tr>
 			<td>category_name</td>
 			<td>
-					<select name="categoryName">
+					<select class="form-control" name="categoryName">
 							<c:forEach var="c" items="${categoryList}">
 								<c:if test="${c.categoryName == cashbook.categoryName}">
 									<option value="${c.categoryName}" selected="selected">${c.categoryName}</option>
@@ -46,17 +46,19 @@
 		<tr>
 			<td>cashbook_price</td>
 			<td>
-				<input type="text" name="cashbookPrice" value="${cashbook.cashbookPrice }">
+				<input class="form-control" type="text" name="cashbookPrice" value="${cashbook.cashbookPrice }">
 			</td>
 		</tr>
 		<tr>
 			<td>cashbook_content</td>
 			<td>
-				<input type="text" name="cashbookContent" value="${cashbook.cashbookContent}">
+				<input class="form-control" type="text" name="cashbookContent" value="${cashbook.cashbookContent}">
 			</td>
 		</tr>
 	</table>
-	<button type="submit">입력</button>
+	<div align="right">
+	<button class="btn btn-primary" type="submit">입력</button>
+	</div>
 </form>
 	</div>
 </body>

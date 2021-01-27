@@ -10,6 +10,13 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  
+  <style>
+  	/*body{
+  		background-image:url('upload/bee.jpg');
+  		background-color: 
+  	}*/
+  </style>
 </head>
 <body>
 	<!-- 상단 바 -->
@@ -54,13 +61,13 @@
 	<form action="${pageContext.request.contextPath}/login" method="post"  class="was-validated">
 		<div class="form-group">
     <label for="uname">ID :</label>
-    <input type="text" class="form-control" id="uname" placeholder="Enter username" name="id" required>
+    <input type="text" class="form-control" id="uname" placeholder="Enter username" name="id" required value="admin">
     	<div class="valid-feedback">Great!</div>
    	 <div class="invalid-feedback">Please enter your ID.</div>
   </div>
   <div class="form-group">
     <label for="pwd">Password:</label>
-    <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pw" required>
+    <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pw" required value="1234">
     	<div class="valid-feedback">Great!</div>
     	<div class="invalid-feedback">Please enter your password.</div>
   </div>

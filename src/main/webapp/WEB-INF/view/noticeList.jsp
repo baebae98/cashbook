@@ -23,7 +23,7 @@
 	</div>
 	<!-- 공지 -->
 	<div class="container">
-	<div><a class="text-dark" href="${pageContext.request.contextPath}/admin/addNotice">[공지사항 추가]</a> </div>
+	<div><a class="" href="${pageContext.request.contextPath}/admin/addNotice">공지사항 추가</a> </div>
 		<table class="table table-bordered table-hover">
 		<thead>
 			<tr>
@@ -74,6 +74,7 @@
 				</c:otherwise>
 			</c:choose>
 		</ul>
+	</div>
 	</div>
 </body>
 </html>

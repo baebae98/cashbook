@@ -13,8 +13,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 	$(document).ready(function(){
-		$('#id').focus();//커서가 id로 감
-		$('#id').blur(function(){//커서가 없으면
+		//$('#id').focus();//커서가 id로 감
+		//$('#id').blur(function(){//커서가 없으면
 			//alert('blur test!');
 
 			//비동기 요청으로 #id값을 서버에 보내고 #id값이 중복되는 값인지 아닌지 받아옴. 
@@ -32,7 +32,7 @@
 						alert($('#id').val()+'사용중인 ID입니다.');
 						$('#id').val('');
 						$('#id').focus();
-						}
+					}
 				}
 			});
 

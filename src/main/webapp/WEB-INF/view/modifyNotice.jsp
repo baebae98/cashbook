@@ -54,19 +54,19 @@ $(document).ready(function(){
 				<table class="table table-bordered table-hover">
 					<tr>
 						<td>notice_id</td>
-						<td><input type="text" name="noticeId" id="noticeId" value="${notice.noticeId}" readonly="readonly"></td>
+						<td><input class="form-control" type="text" name="noticeId" id="noticeId" value="${notice.noticeId}" readonly="readonly"></td>
 					</tr>
 					<tr>
 						<td>notice_title</td>
-						<td><input type="text" name="noticeTitle" id="noticeTitle" value="${notice.noticeTitle}"></td>
+						<td><input class="form-control" type="text" name="noticeTitle" id="noticeTitle" value="${notice.noticeTitle}"></td>
 					</tr>
 					<tr>
 						<td>notice_content</td>
-						<td><textarea name="noticeContent" id="noticeContent">${notice.noticeContent}</textarea></td>
+						<td><textarea class="form-control" rows="5" name="noticeContent" id="noticeContent">${notice.noticeContent}</textarea></td>
 					</tr>
 					<tr>
 						<td>notice_date</td>
-						<td><input type="text" name="noticeDate" id="noticeDate" value="${notice.noticeDate}" readonly="readonly"></td>
+						<td><input class="form-control" type="text" name="noticeDate" id="noticeDate" value="${notice.noticeDate}" readonly="readonly"></td>
 					</tr>
 						<c:forEach var="nf" items="${notice.noticefileList}">
 				<tr>
@@ -85,8 +85,8 @@ $(document).ready(function(){
 				<td>board_file</td>
 				<td>
 					<div>
-						<button type="button" id="addBtn">파일 추가</button>
-						<button type="button" id="delBtn">파일 삭제</button>
+						<button class="btn btn-primary" type="button" id="addBtn">파일 추가</button>
+						<button class="btn btn-danger" type="button" id="delBtn">파일 삭제</button>
 					</div>
 					<div id="fileinput">
 					</div>
@@ -94,7 +94,9 @@ $(document).ready(function(){
 			</tr>
 			<tr>
 				<td colspan="2">
-					<button type="button" id="submitBtn">수정</button>
+					<div align="right">
+					<button class="btn btn-success" type="button" id="submitBtn">수정</button>
+					</div>
 				</td>
 			</tr>
 				</table>
